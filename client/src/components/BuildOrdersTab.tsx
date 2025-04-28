@@ -51,11 +51,11 @@ const BuildOrdersTab: React.FC = () => {
       
       const matchesCivilization = 
         civilizationFilter === "all" || 
-        order.civilization.toLowerCase() === civilizationFilter.toLowerCase();
+        order.civilization === civilizationFilter;
 
       const matchesGod =
         godFilter === "all" ||
-        order.god.toLowerCase() === godFilter.toLowerCase();
+        order.god === godFilter;
       
       return matchesSearch && matchesCivilization && matchesGod;
     });
@@ -104,7 +104,7 @@ const BuildOrdersTab: React.FC = () => {
             <SelectContent className="bg-parchment border-sandy-gold">
               <SelectItem value="all">All Civilizations</SelectItem>
               {civilizationOptions.filter(civ => civ !== "all").map(civilization => (
-                <SelectItem key={civilization} value={civilization.toLowerCase()}>
+                <SelectItem key={civilization} value={civilization}>
                   {civilization}
                 </SelectItem>
               ))}
@@ -121,7 +121,7 @@ const BuildOrdersTab: React.FC = () => {
             <SelectContent className="bg-parchment border-sandy-gold">
               <SelectItem value="all">All Gods</SelectItem>
               {godOptions.filter(god => god !== "all").map(god => (
-                <SelectItem key={god} value={god.toLowerCase()}>
+                <SelectItem key={god} value={god}>
                   {god}
                 </SelectItem>
               ))}
