@@ -5,10 +5,10 @@ const Footer: React.FC = () => {
     <footer className="mt-12 text-center">
       <div className="column-decor">
         <p className="text-earthy-brown py-2">
-          "In strategy and warfare, as in life, wisdom comes from the gods themselves."
+          "In strategy and warfare, as in life, wisdom comes from the niños sexos themselves."
         </p>
         <p className="text-sm text-earthy-light mt-2">
-          © Ancient Strategy Chronicles
+          © Dehydrated Water AoM
         </p>
       </div>
     </footer>
