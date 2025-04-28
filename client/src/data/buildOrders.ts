@@ -2,65 +2,90 @@ export interface BuildOrder {
   id: number;
   name: string;
   civilization: string;
+  god: string;
   type: string;
-  difficulty: number; // 1-5
-  time: string; // format: "00:00"
   description: string;
 }
+
+export const godsByCivilization: Record<string, string[]> = {
+  "Chinese": ["Fuxi", "Nuwa", "Shennong"],
+  "Greek": ["Zeus", "Hades", "Poseidon"],
+  "Egyptian": ["Ra", "Isis", "Set"],
+  "Norse": ["Thor", "Odin", "Loki", "Freyr"],
+  "Atlantean": ["Kronos", "Oranos", "Gaia"]
+};
 
 export const buildOrders: BuildOrder[] = [
   {
     id: 1,
     name: "Fast Heroic Age",
     civilization: "Greek",
+    god: "Poseidon",
     type: "Economic",
-    difficulty: 3,
-    time: "8:30",
     description: "Focus on economic development to reach the Heroic Age quickly."
   },
   {
     id: 2,
     name: "Archer Rush",
     civilization: "Egyptian",
+    god: "Ra",
     type: "Offensive",
-    difficulty: 2,
-    time: "5:45",
     description: "Quickly train archers for an early offensive strategy."
   },
   {
     id: 3,
     name: "Fast Mythical Creatures",
     civilization: "Norse",
+    god: "Odin",
     type: "Offensive",
-    difficulty: 4,
-    time: "7:15",
     description: "Rush to produce powerful mythical units to overwhelm opponents."
   },
   {
     id: 4,
     name: "Divine Intervention",
     civilization: "Greek",
+    god: "Zeus",
     type: "Divine Powers",
-    difficulty: 5,
-    time: "12:30",
     description: "Focus on favor generation to call upon powerful divine powers."
   },
   {
     id: 5,
     name: "Defender's Stance",
     civilization: "Egyptian",
+    god: "Isis",
     type: "Defensive",
-    difficulty: 3,
-    time: "6:45",
     description: "Build strong defensive structures to withstand early attacks."
   },
   {
     id: 6,
     name: "Raiding Party",
     civilization: "Norse",
+    god: "Thor",
     type: "Offensive",
-    difficulty: 1,
-    time: "4:30",
     description: "Simple raiding strategy focused on disrupting enemy economy."
+  },
+  {
+    id: 7,
+    name: "Mythic Rush",
+    civilization: "Atlantean",
+    god: "Kronos",
+    type: "Offensive",
+    description: "Rapidly advance to unlock powerful mythical units and crush opponents."
+  },
+  {
+    id: 8,
+    name: "Prosperity Path",
+    civilization: "Chinese",
+    god: "Nuwa",
+    type: "Economic",
+    description: "Build a strong economy with focus on resource gathering and trading."
+  },
+  {
+    id: 9,
+    name: "Underworld Assault",
+    civilization: "Greek",
+    god: "Hades",
+    type: "Offensive",
+    description: "Utilize underworld units for a powerful mid-game attack strategy."
   }
 ];

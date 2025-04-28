@@ -4,6 +4,12 @@ import Footer from "@/components/Footer";
 import Tabs from "@/components/Tabs";
 import BuildOrdersTab from "@/components/BuildOrdersTab";
 import EmptyTabContent from "@/components/EmptyTabContent";
+import { 
+  GreekCornerDecoration, 
+  MythologyCornerDecoration, 
+  LaurelWreathCorner, 
+  AncientSymbolCorner 
+} from "@/assets/cornerDecorations";
 
 // Tab types
 type TabId = 'build-orders' | 'strategies' | 'units' | 'civilizations' | 'deities';
@@ -31,14 +37,18 @@ const Home = () => {
       
       <main className="bg-parchment bg-opacity-60 rounded-lg shadow-lg p-4 md:p-6 border-2 border-sandy-gold relative overflow-hidden">
         {/* Decorative corner elements */}
-        <div className="absolute top-0 left-0 w-16 h-16 opacity-20 bg-contain bg-no-repeat bg-center" 
-             style={{backgroundImage: "url('https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"}}></div>
-        <div className="absolute top-0 right-0 w-16 h-16 opacity-20 bg-contain bg-no-repeat bg-center transform rotate-90"
-             style={{backgroundImage: "url('https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"}}></div>
-        <div className="absolute bottom-0 left-0 w-16 h-16 opacity-20 bg-contain bg-no-repeat bg-center transform -rotate-90"
-             style={{backgroundImage: "url('https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"}}></div>
-        <div className="absolute bottom-0 right-0 w-16 h-16 opacity-20 bg-contain bg-no-repeat bg-center transform rotate-180"
-             style={{backgroundImage: "url('https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"}}></div>
+        <div className="absolute top-0 left-0 w-16 h-16 text-earthy-light opacity-40">
+          <GreekCornerDecoration />
+        </div>
+        <div className="absolute top-0 right-0 w-16 h-16 text-earthy-light opacity-40 transform rotate-90">
+          <MythologyCornerDecoration />
+        </div>
+        <div className="absolute bottom-0 left-0 w-16 h-16 text-earthy-light opacity-40 transform -rotate-90">
+          <LaurelWreathCorner />
+        </div>
+        <div className="absolute bottom-0 right-0 w-16 h-16 text-earthy-light opacity-40 transform rotate-180">
+          <AncientSymbolCorner />
+        </div>
         
         {/* Tab Content */}
         {activeTab === 'build-orders' && <BuildOrdersTab />}
