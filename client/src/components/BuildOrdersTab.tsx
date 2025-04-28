@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
+import { useLocation } from "wouter";
 import { 
   Table, 
   TableBody, 
@@ -10,28 +11,27 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Eye, Edit, Plus } from "lucide-react";
+import { Eye, Edit, Plus, Scroll } from "lucide-react";
 import useSort from "@/hooks/useSort";
-import { buildOrders as mockBuildOrders, godsByCivilization } from "@/data/buildOrders";
-
-// Build Order Type 
-interface BuildOrder {
-  id: number;
-  name: string;
-  civilization: string;
-  god: string;
-  type: string;
-  description: string;
-}
+import { godsByCivilization } from "@/data/buildOrders";
+import { fetchBuildOrders } from "@/api/buildOrders";
+import { useQuery } from "@tanstack/react-query";
+import { BuildOrder } from "@shared/schema";
+import CreateBuildOrderDialog from "./CreateBuildOrderDialog";
 
 const BuildOrdersTab: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [civilizationFilter, setCivilizationFilter] = useState("all");
   const [godFilter, setGodFilter] = useState("all");
+  const [createDialogOpen, setCreateDialogOpen] = useState(false);
+  const [, setLocation] = useLocation();
 
-  // Use local data for now instead of fetching from server
-  const isLoading = false;
-  const buildOrders = mockBuildOrders;
+  // Fetch build orders from database
+  const { data: buildOrders = [], isLoading, refetch } = useQuery({
+    queryKey: ['/api/build-orders'],
+    queryFn: () => fetchBuildOrders(),
+    enabled: true,
+  });
 
   // Reset god filter when civilization changes
   useEffect(() => {
@@ -78,9 +78,19 @@ const BuildOrdersTab: React.FC = () => {
     }
   }, [civilizationFilter]);
 
+  // View build order details
+  const handleViewBuildOrder = (id: number) => {
+    setLocation(`/build-orders/${id}`);
+  };
+
   // Handle create build order
   const handleCreateBuildOrder = () => {
-    alert("Create Build Order feature will be implemented soon!");
+    setCreateDialogOpen(true);
+  };
+  
+  // Handle successful creation
+  const handleCreateSuccess = () => {
+    refetch();
   };
 
   if (isLoading) {
@@ -216,10 +226,18 @@ const BuildOrdersTab: React.FC = () => {
                   <TableCell className="px-4 py-3">{order.type}</TableCell>
                   <TableCell className="px-4 py-3 text-center">
                     <div className="flex items-center justify-center space-x-2">
-                      <Button className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-3 py-1 h-8">
+                      <Button 
+                        className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-3 py-1 h-8"
+                        onClick={() => handleViewBuildOrder(order.id)}
+                      >
                         <Eye className="h-4 w-4 mr-1" /> View
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-parchment-dark h-8 w-8 p-0 min-w-0">
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="bg-parchment-dark h-8 w-8 p-0 min-w-0"
+                        disabled
+                      >
                         <Edit className="h-3 w-3" />
                       </Button>
                     </div>
@@ -241,6 +259,13 @@ const BuildOrdersTab: React.FC = () => {
           Create Build Order
         </Button>
       </div>
+      
+      {/* Create Build Order Dialog */}
+      <CreateBuildOrderDialog 
+        open={createDialogOpen}
+        onOpenChange={setCreateDialogOpen}
+        onSuccess={handleCreateSuccess}
+      />
     </div>
   );
 };
