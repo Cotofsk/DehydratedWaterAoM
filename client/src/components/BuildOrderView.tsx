@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Scroll } from 'lucide-react';
+import { ArrowLeft, Scroll, Edit } from 'lucide-react';
 import { fetchBuildOrder, fetchBuildOrderEntries } from '@/api/buildOrders';
 import { BuildOrder, BuildOrderEntry } from '@shared/schema';
+import EditBuildOrderDialog from './EditBuildOrderDialog';
 
 const BuildOrderView: React.FC = () => {
   const [buildOrder, setBuildOrder] = useState<BuildOrder | null>(null);
   const [entries, setEntries] = useState<BuildOrderEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
   const params = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
   
@@ -40,6 +42,31 @@ const BuildOrderView: React.FC = () => {
   
   const goBack = () => {
     setLocation('/');
+  };
+  
+  // Refresh data after edit
+  const handleEditSuccess = async () => {
+    if (!id) return;
+    
+    try {
+      setLoading(true);
+      const [updatedBuildOrder, updatedEntries] = await Promise.all([
+        fetchBuildOrder(id),
+        fetchBuildOrderEntries(id)
+      ]);
+      
+      setBuildOrder(updatedBuildOrder);
+      setEntries(updatedEntries);
+    } catch (err) {
+      console.error('Error refreshing data:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // Handle delete (navigate back to list)
+  const handleDelete = () => {
+    goBack();
   };
   
   if (loading) {
@@ -77,12 +104,22 @@ const BuildOrderView: React.FC = () => {
           Back
         </Button>
         
-        <div className="flex flex-col items-end">
-          <div className="bg-earthy-brown text-parchment-light px-3 py-1 rounded-md text-sm">
-            {buildOrder.civilization} - {buildOrder.god}
-          </div>
-          <div className="text-earthy-light text-sm mt-1">
-            {buildOrder.type}
+        <div className="flex items-center gap-3">
+          <Button
+            onClick={() => setEditDialogOpen(true)}
+            className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light"
+          >
+            <Edit className="h-4 w-4 mr-2" />
+            Edit
+          </Button>
+          
+          <div className="flex flex-col items-end">
+            <div className="bg-earthy-brown text-parchment-light px-3 py-1 rounded-md text-sm">
+              {buildOrder.civilization} - {buildOrder.god}
+            </div>
+            <div className="text-earthy-light text-sm mt-1">
+              {buildOrder.type}
+            </div>
           </div>
         </div>
       </div>
@@ -161,6 +198,17 @@ const BuildOrderView: React.FC = () => {
             </tbody>
           </table>
         </div>
+      )}
+      
+      {/* Edit Build Order Dialog */}
+      {id && (
+        <EditBuildOrderDialog
+          buildOrderId={id}
+          open={editDialogOpen}
+          onOpenChange={setEditDialogOpen}
+          onSuccess={handleEditSuccess}
+          onDelete={handleDelete}
+        />
       )}
     </div>
   );
