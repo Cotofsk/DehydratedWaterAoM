@@ -36,18 +36,18 @@ const Home = () => {
       />
       
       <main className="bg-parchment bg-opacity-60 rounded-lg shadow-lg p-4 md:p-6 border-2 border-sandy-gold relative overflow-hidden">
-        {/* Decorative corner elements */}
+        {/* Decorative corner elements - using the same element in all corners */}
         <div className="absolute top-0 left-0 w-16 h-16 text-earthy-light opacity-40">
           <GreekCornerDecoration />
         </div>
         <div className="absolute top-0 right-0 w-16 h-16 text-earthy-light opacity-40 transform rotate-90">
-          <MythologyCornerDecoration />
+          <GreekCornerDecoration />
         </div>
         <div className="absolute bottom-0 left-0 w-16 h-16 text-earthy-light opacity-40 transform -rotate-90">
-          <LaurelWreathCorner />
+          <GreekCornerDecoration />
         </div>
         <div className="absolute bottom-0 right-0 w-16 h-16 text-earthy-light opacity-40 transform rotate-180">
-          <AncientSymbolCorner />
+          <GreekCornerDecoration />
         </div>
         
         {/* Tab Content */}

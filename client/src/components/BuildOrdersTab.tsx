@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Eye, Edit, ChevronLeft, ChevronRight } from "lucide-react";
+import { Eye, Edit, Plus } from "lucide-react";
 import useSort from "@/hooks/useSort";
 import { buildOrders as mockBuildOrders, godsByCivilization } from "@/data/buildOrders";
 
@@ -28,8 +28,6 @@ const BuildOrdersTab: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [civilizationFilter, setCivilizationFilter] = useState("all");
   const [godFilter, setGodFilter] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
 
   // Use local data for now instead of fetching from server
   const isLoading = false;
@@ -63,13 +61,6 @@ const BuildOrdersTab: React.FC = () => {
     });
   }, [sortedItems, searchTerm, civilizationFilter, godFilter]);
 
-  // Pagination
-  const pageCount = Math.ceil(filteredBuildOrders.length / itemsPerPage);
-  const paginatedBuildOrders = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return filteredBuildOrders.slice(startIndex, startIndex + itemsPerPage);
-  }, [filteredBuildOrders, currentPage]);
-
   // Civilization options for filter dropdown
   const civilizationOptions = useMemo(() => {
     const civilizations = Array.from(new Set(buildOrders.map(order => order.civilization)));
@@ -79,9 +70,7 @@ const BuildOrdersTab: React.FC = () => {
   // God options based on selected civilization
   const godOptions = useMemo(() => {
     if (civilizationFilter === "all") {
-      // If all civilizations are selected, show all gods from all civilizations
-      const allGods = Object.values(godsByCivilization).flat();
-      return ["all", ...Array.from(new Set(allGods))];
+      return ["all"];
     } else {
       // Find gods for the selected civilization
       const godsForCivilization = godsByCivilization[civilizationFilter] || [];
@@ -89,9 +78,9 @@ const BuildOrdersTab: React.FC = () => {
     }
   }, [civilizationFilter]);
 
-  // Change page
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
+  // Handle create build order
+  const handleCreateBuildOrder = () => {
+    alert("Create Build Order feature will be implemented soon!");
   };
 
   if (isLoading) {
@@ -151,10 +140,10 @@ const BuildOrdersTab: React.FC = () => {
         </div>
       </div>
 
-      {/* Build orders table */}
-      <div className="overflow-x-auto scroll-design">
-        <Table className="min-w-full border-2 border-sandy-gold bg-parchment bg-opacity-50">
-          <TableHeader>
+      {/* Build orders table with scrolling */}
+      <div className="overflow-x-auto overflow-y-auto max-h-[400px] scroll-design rounded-lg border-2 border-sandy-gold">
+        <Table className="min-w-full bg-parchment bg-opacity-50">
+          <TableHeader className="sticky top-0 z-10">
             <TableRow className="bg-earthy-brown text-parchment-light">
               <TableHead 
                 className="px-4 py-3 text-left font-cinzel cursor-pointer"
@@ -212,14 +201,14 @@ const BuildOrdersTab: React.FC = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {paginatedBuildOrders.length === 0 ? (
+            {filteredBuildOrders.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="text-center py-4">
                   No build orders found matching your criteria.
                 </TableCell>
               </TableRow>
             ) : (
-              paginatedBuildOrders.map((order) => (
+              filteredBuildOrders.map((order: BuildOrder) => (
                 <TableRow key={order.id} className="border-b border-sandy-gold hover:bg-parchment-dark transition-colors">
                   <TableCell className="px-4 py-3 font-semibold">{order.name}</TableCell>
                   <TableCell className="px-4 py-3">{order.civilization}</TableCell>
@@ -242,58 +231,16 @@ const BuildOrdersTab: React.FC = () => {
         </Table>
       </div>
 
-      {/* Pagination controls */}
-      {filteredBuildOrders.length > 0 && (
-        <div className="mt-6 flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-sm text-earthy-brown mb-3 sm:mb-0">
-            Showing <span className="font-semibold">
-              {(currentPage - 1) * itemsPerPage + 1}-
-              {Math.min(currentPage * itemsPerPage, filteredBuildOrders.length)}
-            </span> of <span className="font-semibold">{filteredBuildOrders.length}</span> build orders
-          </div>
-          
-          <div className="flex space-x-2">
-            <Button 
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage === 1}
-              variant="outline"
-              size="sm"
-              className="px-3 py-1 bg-parchment-dark border border-sandy-gold rounded-md hover:bg-sandy-gold hover:text-parchment-light transition-colors disabled:opacity-50"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            
-            {Array.from({ length: Math.min(pageCount, 4) }).map((_, i) => {
-              const pageNum = i + 1;
-              return (
-                <Button
-                  key={i}
-                  onClick={() => goToPage(pageNum)}
-                  variant={currentPage === pageNum ? "default" : "outline"}
-                  size="sm"
-                  className={`px-3 py-1 border border-sandy-gold rounded-md transition-colors ${
-                    currentPage === pageNum 
-                      ? "bg-sandy-gold text-parchment-light" 
-                      : "bg-parchment-dark hover:bg-sandy-gold hover:text-parchment-light"
-                  }`}
-                >
-                  {pageNum}
-                </Button>
-              );
-            })}
-            
-            <Button 
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage === pageCount || pageCount === 0}
-              variant="outline"
-              size="sm"
-              className="px-3 py-1 bg-parchment-dark border border-sandy-gold rounded-md hover:bg-sandy-gold hover:text-parchment-light transition-colors disabled:opacity-50"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      )}
+      {/* Create Build Order button */}
+      <div className="mt-6 flex justify-center">
+        <Button 
+          onClick={handleCreateBuildOrder}
+          className="bg-accent-gold hover:bg-accent-dark text-parchment-light font-cinzel font-semibold py-2 px-6 text-lg"
+        >
+          <Plus className="h-5 w-5 mr-2" />
+          Create Build Order
+        </Button>
+      </div>
     </div>
   );
 };
