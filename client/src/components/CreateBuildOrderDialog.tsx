@@ -93,6 +93,8 @@ const CreateBuildOrderDialog: React.FC<CreateBuildOrderDialogProps> = ({
       await createBuildOrder({
         ...data,
         isPublic: true,
+        userId: null, // No user authentication for now
+        tags: [] // Empty tags for now
       });
       
       // Show success toast

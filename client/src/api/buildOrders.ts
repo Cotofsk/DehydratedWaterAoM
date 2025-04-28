@@ -1,5 +1,5 @@
 import { apiRequest } from "../lib/queryClient";
-import { BuildOrder } from "@shared/schema";
+import { BuildOrder, BuildOrderEntry, InsertBuildOrder, InsertBuildOrderEntry } from "@shared/schema";
 
 // Get all build orders with optional filters
 export const fetchBuildOrders = async (filters?: {
@@ -18,84 +18,84 @@ export const fetchBuildOrders = async (filters?: {
   const queryString = queryParams.toString();
   const url = `/api/build-orders${queryString ? `?${queryString}` : ''}`;
   
-  return await apiRequest<BuildOrder[]>(url);
+  return apiRequest(url) as Promise<BuildOrder[]>;
 };
 
 // Get a specific build order by ID
 export const fetchBuildOrder = async (id: number) => {
-  return await apiRequest<BuildOrder>(`/api/build-orders/${id}`);
+  return apiRequest(`/api/build-orders/${id}`) as Promise<BuildOrder>;
 };
 
 // Create a new build order
-export const createBuildOrder = async (buildOrder: Omit<BuildOrder, 'id' | 'createdAt' | 'updatedAt'>) => {
-  return await apiRequest<BuildOrder>('/api/build-orders', {
+export const createBuildOrder = async (buildOrder: InsertBuildOrder) => {
+  return apiRequest('/api/build-orders', {
     method: 'POST',
     body: JSON.stringify(buildOrder),
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  }) as Promise<BuildOrder>;
 };
 
 // Update a build order
-export const updateBuildOrder = async (id: number, buildOrder: Partial<Omit<BuildOrder, 'id' | 'createdAt' | 'updatedAt'>>) => {
-  return await apiRequest<BuildOrder>(`/api/build-orders/${id}`, {
+export const updateBuildOrder = async (id: number, buildOrder: Partial<InsertBuildOrder>) => {
+  return apiRequest(`/api/build-orders/${id}`, {
     method: 'PUT',
     body: JSON.stringify(buildOrder),
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  }) as Promise<BuildOrder>;
 };
 
 // Delete a build order
 export const deleteBuildOrder = async (id: number) => {
-  return await apiRequest(`/api/build-orders/${id}`, {
+  return apiRequest(`/api/build-orders/${id}`, {
     method: 'DELETE',
   });
 };
 
 // Fetch build order entries
 export const fetchBuildOrderEntries = async (buildOrderId: number) => {
-  return await apiRequest<any[]>(`/api/build-orders/${buildOrderId}/entries`);
+  return apiRequest(`/api/build-orders/${buildOrderId}/entries`) as Promise<BuildOrderEntry[]>;
 };
 
 // Create a build order entry
-export const createBuildOrderEntry = async (buildOrderId: number, entry: any) => {
-  return await apiRequest<any>(`/api/build-orders/${buildOrderId}/entries`, {
+export const createBuildOrderEntry = async (buildOrderId: number, entry: Omit<InsertBuildOrderEntry, 'buildOrderId'>) => {
+  return apiRequest(`/api/build-orders/${buildOrderId}/entries`, {
     method: 'POST',
     body: JSON.stringify(entry),
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  }) as Promise<BuildOrderEntry>;
 };
 
 // Update a build order entry
-export const updateBuildOrderEntry = async (entryId: number, entry: any) => {
-  return await apiRequest<any>(`/api/build-order-entries/${entryId}`, {
+export const updateBuildOrderEntry = async (entryId: number, entry: Partial<Omit<InsertBuildOrderEntry, 'buildOrderId'>>) => {
+  return apiRequest(`/api/build-order-entries/${entryId}`, {
     method: 'PUT',
     body: JSON.stringify(entry),
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  }) as Promise<BuildOrderEntry>;
 };
 
 // Delete a build order entry
 export const deleteBuildOrderEntry = async (entryId: number) => {
-  return await apiRequest(`/api/build-order-entries/${entryId}`, {
+  return apiRequest(`/api/build-order-entries/${entryId}`, {
     method: 'DELETE',
   });
 };
 
 // Reorder build order entries
 export const reorderBuildOrderEntries = async (buildOrderId: number, entryIds: number[]) => {
-  return await apiRequest<any[]>(`/api/build-orders/${buildOrderId}/entries/reorder`, {
+  return apiRequest(`/api/build-orders/${buildOrderId}/entries/reorder`, {
     method: 'POST',
     body: JSON.stringify({ entryIds }),
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  }) as Promise<BuildOrderEntry[]>;
 };

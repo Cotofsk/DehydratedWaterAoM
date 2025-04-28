@@ -29,7 +29,15 @@ const BuildOrdersTab: React.FC = () => {
   // Fetch build orders from database
   const { data: buildOrders = [], isLoading, refetch } = useQuery({
     queryKey: ['/api/build-orders'],
-    queryFn: () => fetchBuildOrders(),
+    queryFn: async () => {
+      try {
+        const data = await fetchBuildOrders();
+        return data;
+      } catch (error) {
+        console.error("Error fetching build orders:", error);
+        return [];
+      }
+    },
     enabled: true,
   });
 

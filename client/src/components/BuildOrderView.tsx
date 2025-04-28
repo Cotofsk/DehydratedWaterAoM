@@ -3,20 +3,7 @@ import { useParams, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Scroll } from 'lucide-react';
 import { fetchBuildOrder, fetchBuildOrderEntries } from '@/api/buildOrders';
-import { BuildOrder } from '@shared/schema';
-
-interface BuildOrderEntry {
-  id: number;
-  sequence: number;
-  mainAction: string;
-  miscellaneousAction?: string;
-  villagerCount?: number;
-  timeStamp?: string;
-  agePhase?: string;
-  population?: number;
-  notes?: string;
-  isComplete: boolean;
-}
+import { BuildOrder, BuildOrderEntry } from '@shared/schema';
 
 const BuildOrderView: React.FC = () => {
   const [buildOrder, setBuildOrder] = useState<BuildOrder | null>(null);
@@ -34,10 +21,8 @@ const BuildOrderView: React.FC = () => {
       
       try {
         setLoading(true);
-        const [buildOrderData, entriesData] = await Promise.all([
-          fetchBuildOrder(id),
-          fetchBuildOrderEntries(id)
-        ]);
+        const buildOrderData = await fetchBuildOrder(id);
+        const entriesData = await fetchBuildOrderEntries(id);
         
         setBuildOrder(buildOrderData);
         setEntries(entriesData);
