@@ -164,7 +164,7 @@ const BuildOrdersTab: React.FC = () => {
           <TableHeader className="sticky top-0 z-10">
             <TableRow className="bg-earthy-brown text-parchment-light">
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-4 text-left font-cinzel cursor-pointer text-xl text-white"
                 onClick={() => requestSort('name')}
               >
                 <div className="flex items-center">
@@ -177,7 +177,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-4 text-left font-cinzel cursor-pointer text-xl text-white"
                 onClick={() => requestSort('civilization')}
               >
                 <div className="flex items-center">
@@ -190,7 +190,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-4 text-left font-cinzel cursor-pointer text-xl text-white"
                 onClick={() => requestSort('god')}
               >
                 <div className="flex items-center">
@@ -203,7 +203,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-4 text-left font-cinzel cursor-pointer text-xl text-white"
                 onClick={() => requestSort('type')}
               >
                 <div className="flex items-center">
@@ -215,7 +215,7 @@ const BuildOrdersTab: React.FC = () => {
                   )}
                 </div>
               </TableHead>
-              <TableHead className="px-4 py-3 text-center font-cinzel">Actions</TableHead>
+              <TableHead className="px-4 py-4 text-center font-cinzel text-xl text-white">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
