@@ -203,7 +203,7 @@ const BuildOrderView: React.FC = () => {
                           </div>
                           <span className="text-base font-bold leading-none">0</span>
                         </div>
-                      <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-center">
                           <div className="w-[32px] h-[32px] relative">
                             <img src="/images/wood.png" alt="Wood" className="w-full h-full object-cover" />
                           </div>
@@ -215,7 +215,7 @@ const BuildOrderView: React.FC = () => {
                           </div>
                           <span className="text-base font-bold leading-none">0</span>
                         </div>
-                    </div>
+                      </div>
                   </td>
                 </tr>
                 {entry.miscellaneousAction && (
