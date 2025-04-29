@@ -747,6 +747,69 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                   />
 
 
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="flex flex-col items-center">
+                      <img src="/images/food.png" alt="Food" className="w-8 h-8 mb-2" />
+                      <FormField
+                        control={entryForm.control}
+                        name="food"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input 
+                                type="number"
+                                {...field}
+                                value={field.value || ''}
+                                onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                className="bg-parchment-light border-2 border-sandy-gold w-24"
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <img src="/images/wood.png" alt="Wood" className="w-8 h-8 mb-2" />
+                      <FormField
+                        control={entryForm.control}
+                        name="wood"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input 
+                                type="number"
+                                {...field}
+                                value={field.value || ''}
+                                onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                className="bg-parchment-light border-2 border-sandy-gold w-24"
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <img src="/images/gold.png" alt="Gold" className="w-8 h-8 mb-2" />
+                      <FormField
+                        control={entryForm.control}
+                        name="gold"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input 
+                                type="number"
+                                {...field}
+                                value={field.value || ''}
+                                onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                className="bg-parchment-light border-2 border-sandy-gold w-24"
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                  </div>
+
                   <FormField
                     control={entryForm.control}
                     name="notes"
@@ -828,6 +891,69 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
+
+                    <div className="grid grid-cols-3 gap-4 mb-4">
+                      <div className="flex flex-col items-center">
+                        <img src="/images/food.png" alt="Food" className="w-8 h-8 mb-2" />
+                        <FormField
+                          control={editEntryForm.control}
+                          name="food"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input 
+                                  type="number"
+                                  {...field}
+                                  value={field.value || ''}
+                                  onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                  className="bg-parchment-light border-2 border-sandy-gold w-24"
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src="/images/wood.png" alt="Wood" className="w-8 h-8 mb-2" />
+                        <FormField
+                          control={editEntryForm.control}
+                          name="wood"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input 
+                                  type="number"
+                                  {...field}
+                                  value={field.value || ''}
+                                  onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                  className="bg-parchment-light border-2 border-sandy-gold w-24"
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src="/images/gold.png" alt="Gold" className="w-8 h-8 mb-2" />
+                        <FormField
+                          control={editEntryForm.control}
+                          name="gold"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input 
+                                  type="number"
+                                  {...field}
+                                  value={field.value || ''}
+                                  onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                  className="bg-parchment-light border-2 border-sandy-gold w-24"
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
 
                     <FormField
                       control={editEntryForm.control}
