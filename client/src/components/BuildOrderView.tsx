@@ -104,23 +104,23 @@ const BuildOrderView: React.FC = () => {
           Back
         </Button>
 
-        <div className="flex items-center gap-3">
-          <Button
-            onClick={() => setEditDialogOpen(true)}
-            className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light"
-          >
-            <Edit className="h-4 w-4 mr-2" />
-            Edit
-          </Button>
-
-          <div className="flex flex-col items-end">
-            <div className="bg-earthy-brown text-parchment-light px-3 py-1 rounded-md text-sm">
+        <div className="flex items-center gap-4">
+          <div className="flex flex-col bg-earthy-brown rounded-lg p-3 shadow-md">
+            <div className="text-parchment-light text-lg font-medium">
               {buildOrder.civilization} - {buildOrder.god}
             </div>
-            <div className="text-earthy-light text-sm mt-1">
+            <div className="text-parchment-light/80 text-base mt-1">
               {buildOrder.type}
             </div>
           </div>
+
+          <Button
+            onClick={() => setEditDialogOpen(true)}
+            className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light h-full px-6 text-lg"
+          >
+            <Edit className="h-5 w-5 mr-2" />
+            Edit
+          </Button>
         </div>
       </div>
 
