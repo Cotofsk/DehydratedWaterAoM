@@ -195,18 +195,18 @@ const BuildOrderView: React.FC = () => {
                         </Tooltip>
                       )}
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-6">
                       <div className="flex flex-col items-center">
-                        <img src="/images/food.png" alt="Food" className="w-[40px] h-[40px] object-contain" />
-                        <span className="text-sm">0</span>
+                        <img src="/images/food.png" alt="Food" className="w-[60px] h-[60px] object-contain" />
+                        <span className="text-base">0</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <img src="/images/wood.png" alt="Wood" className="w-[40px] h-[40px] object-contain" />
-                        <span className="text-sm">0</span>
+                        <img src="/images/wood.png" alt="Wood" className="w-[60px] h-[60px] object-contain" />
+                        <span className="text-base">0</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <img src="/images/gold.png" alt="Gold" className="w-[40px] h-[40px] object-contain" />
-                        <span className="text-sm">0</span>
+                        <img src="/images/gold.png" alt="Gold" className="w-[60px] h-[60px] object-contain" />
+                        <span className="text-base">0</span>
                       </div>
                     </div>
                   </td>
