@@ -165,13 +165,13 @@ const BuildOrderView: React.FC = () => {
             {entries.map((entry) => (
               <React.Fragment key={entry.id}>
                 <tr className="hover:bg-sandy-gold/5">
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-sandy-gold/90">
+                  <td className="px-5 py-4 whitespace-nowrap text-base font-medium text-sandy-light">
                     {entry.sequence}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold/90 font-bold">
+                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light font-bold">
                     {entry.mainAction}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold/90">
+                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light">
                     {entry.villagerCount && (
                       <span className="mr-2">👥 {entry.villagerCount}</span>
                     )}
@@ -182,8 +182,8 @@ const BuildOrderView: React.FC = () => {
                 </tr>
                 {entry.miscellaneousAction && (
                   <tr className="bg-sandy-gold/10">
-                    <td className="px-4 py-2 text-sm text-sandy-gold/70"></td>
-                    <td colSpan={2} className="px-4 py-2 text-sm text-sandy-gold font-medium italic">
+                    <td className="px-5 py-3 text-base text-sandy-light/70"></td>
+                    <td colSpan={2} className="px-5 py-3 text-base text-sandy-light font-medium italic">
                       {entry.miscellaneousAction}
                     </td>
                   </tr>
