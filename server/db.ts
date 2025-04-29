@@ -1,3 +1,4 @@
+
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
@@ -6,12 +7,13 @@ import 'dotenv/config';
 
 neonConfig.webSocketConstructor = ws;
 
-if (!process.env.DATABASE_URL) {
+const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
   throw new Error('DATABASE_URL environment variable is not set');
 }
 
 // Create a connection pool
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+export const pool = new Pool({ connectionString: databaseUrl });
 
 // Create a Drizzle ORM instance
 export const db = drizzle(pool, { schema });
