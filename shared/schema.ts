@@ -31,12 +31,7 @@ export const buildOrderEntries = pgTable("build_order_entries", {
   sequence: integer("sequence").default(0), // Order in which entries appear
   mainAction: text("main_action").notNull(), // Main row content
   miscellaneousAction: text("miscellaneous_action"), // Optional row content
-  villagerCount: integer("villager_count"), // Optional villager count
-  timeStamp: text("time_stamp"), // Optional timestamp (like "2:15")
-  agePhase: text("age_phase"), // Optional age/phase information
-  population: integer("population"), // Optional population count
   notes: text("notes"), // Optional notes
-  isComplete: boolean("is_complete").default(false), // Whether this step is complete
 });
 
 // Define relations between tables
