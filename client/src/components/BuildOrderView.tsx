@@ -14,18 +14,18 @@ const BuildOrderView: React.FC = () => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const params = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
-  
+
   const id = params?.id ? parseInt(params.id) : undefined;
-  
+
   useEffect(() => {
     async function loadBuildOrder() {
       if (!id) return;
-      
+
       try {
         setLoading(true);
         const buildOrderData = await fetchBuildOrder(id);
         const entriesData = await fetchBuildOrderEntries(id);
-        
+
         setBuildOrder(buildOrderData);
         setEntries(entriesData);
         setError(null);
@@ -36,25 +36,25 @@ const BuildOrderView: React.FC = () => {
         setLoading(false);
       }
     }
-    
+
     loadBuildOrder();
   }, [id]);
-  
+
   const goBack = () => {
     setLocation('/');
   };
-  
+
   // Refresh data after edit
   const handleEditSuccess = async () => {
     if (!id) return;
-    
+
     try {
       setLoading(true);
       const [updatedBuildOrder, updatedEntries] = await Promise.all([
         fetchBuildOrder(id),
         fetchBuildOrderEntries(id)
       ]);
-      
+
       setBuildOrder(updatedBuildOrder);
       setEntries(updatedEntries);
     } catch (err) {
@@ -63,12 +63,12 @@ const BuildOrderView: React.FC = () => {
       setLoading(false);
     }
   };
-  
+
   // Handle delete (navigate back to list)
   const handleDelete = () => {
     goBack();
   };
-  
+
   if (loading) {
     return (
       <div className="flex justify-center items-center p-12">
@@ -76,7 +76,7 @@ const BuildOrderView: React.FC = () => {
       </div>
     );
   }
-  
+
   if (error || !buildOrder) {
     return (
       <div className="bg-parchment-light p-6 rounded-lg border-2 border-sandy-gold">
@@ -91,7 +91,7 @@ const BuildOrderView: React.FC = () => {
       </div>
     );
   }
-  
+
   return (
     <div className="bg-parchment-light p-6 rounded-lg border-2 border-sandy-gold">
       <div className="flex justify-between items-start mb-6">
@@ -103,7 +103,7 @@ const BuildOrderView: React.FC = () => {
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back
         </Button>
-        
+
         <div className="flex items-center gap-3">
           <Button
             onClick={() => setEditDialogOpen(true)}
@@ -112,7 +112,7 @@ const BuildOrderView: React.FC = () => {
             <Edit className="h-4 w-4 mr-2" />
             Edit
           </Button>
-          
+
           <div className="flex flex-col items-end">
             <div className="bg-earthy-brown text-parchment-light px-3 py-1 rounded-md text-sm">
               {buildOrder.civilization} - {buildOrder.god}
@@ -123,7 +123,7 @@ const BuildOrderView: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="mb-6">
         <h1 className="text-2xl font-cinzel text-earthy-dark font-bold mb-2">
           {buildOrder.name}
@@ -132,7 +132,7 @@ const BuildOrderView: React.FC = () => {
           {buildOrder.description}
         </p>
       </div>
-      
+
       {entries.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-8 text-earthy-light">
           <Scroll className="h-10 w-10 mb-4 opacity-40" />
@@ -151,12 +151,6 @@ const BuildOrderView: React.FC = () => {
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider">
                   Details
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider">
-                  Time
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider">
-                  Age
                 </th>
               </tr>
             </thead>
@@ -178,17 +172,11 @@ const BuildOrderView: React.FC = () => {
                         <span>Pop: {entry.population}</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 whitespace-nowrap text-sm text-earthy-dark">
-                      {entry.timeStamp}
-                    </td>
-                    <td className="px-4 py-3 whitespace-nowrap text-sm text-earthy-dark">
-                      {entry.agePhase}
-                    </td>
                   </tr>
                   {entry.miscellaneousAction && (
                     <tr className="bg-parchment bg-opacity-40">
                       <td className="px-4 py-2 text-sm text-earthy-light"></td>
-                      <td colSpan={4} className="px-4 py-2 text-sm text-earthy-light italic">
+                      <td colSpan={2} className="px-4 py-2 text-sm text-earthy-light italic">
                         {entry.miscellaneousAction}
                       </td>
                     </tr>
@@ -199,7 +187,7 @@ const BuildOrderView: React.FC = () => {
           </table>
         </div>
       )}
-      
+
       {/* Edit Build Order Dialog */}
       {id && (
         <EditBuildOrderDialog
