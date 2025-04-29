@@ -216,6 +216,7 @@ const BuildOrderView: React.FC = () => {
                           <span className="text-base font-bold leading-none">0</span>
                         </div>
                       </div>
+                    </div>
                   </td>
                 </tr>
                 {entry.miscellaneousAction && (
