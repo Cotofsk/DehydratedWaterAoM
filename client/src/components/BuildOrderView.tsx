@@ -98,7 +98,7 @@ const BuildOrderView: React.FC = () => {
         <Button 
           onClick={goBack}
           variant="outline"
-          className="border-sandy-gold/30 hover:bg-sandy-gold/20 hover:text-sandy-gold hover:border-sandy-gold"
+          className="border-accent-gold/50 hover:bg-accent-gold/20 hover:text-accent-gold hover:border-accent-gold border-2"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back
@@ -116,7 +116,7 @@ const BuildOrderView: React.FC = () => {
 
           <Button
             onClick={() => setEditDialogOpen(true)}
-            className="bg-sandy-gold/20 hover:bg-sandy-gold/30 text-sandy-gold border border-sandy-gold/30 h-full px-6 text-lg"
+            className="bg-accent-gold/20 hover:bg-accent-gold/30 text-accent-gold border-2 border-accent-gold/50 h-full px-6 text-lg"
           >
             <Edit className="h-5 w-5 mr-2" />
             Edit
@@ -125,10 +125,10 @@ const BuildOrderView: React.FC = () => {
       </div>
 
       <div className="mb-6">
-        <h1 className="text-2xl font-cinzel text-earthy-dark font-bold mb-2">
+        <h1 className="text-2xl font-cinzel text-accent-gold font-bold mb-2">
           {buildOrder.name}
         </h1>
-        <p className="text-earthy-brown">
+        <p className="text-sandy-gold/90">
           {buildOrder.description}
         </p>
       </div>
@@ -139,8 +139,8 @@ const BuildOrderView: React.FC = () => {
           <p>No steps have been added to this build order yet.</p>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-lg border border-sandy-gold/30">
-          <table className="min-w-full divide-y divide-sandy-gold/30">
+        <div className="overflow-hidden rounded-lg border-2 border-sandy-gold/30">
+          <table className="min-w-full divide-y-2 divide-sandy-gold/30">
             <thead className="bg-wood-dark/90">
               <tr>
                 <th className="px-4 py-3 text-left text-xs font-medium text-sandy-gold uppercase tracking-wider font-cinzel">
@@ -154,7 +154,7 @@ const BuildOrderView: React.FC = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-wood-dark/80 divide-y divide-sandy-gold/30">
+            <tbody className="bg-wood-dark/80 divide-y-2 divide-sandy-gold/30">
               {entries.map((entry) => (
                 <React.Fragment key={entry.id}>
                   <tr className="hover:bg-wood-dark/95">
