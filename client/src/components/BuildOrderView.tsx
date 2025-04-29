@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
@@ -162,7 +161,7 @@ const BuildOrderView: React.FC = () => {
               <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider font-cinzel">
                 Main Action
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider font-cinzel">
+              <th className="w-12 px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider font-cinzel">
                 Details
               </th>
             </tr>
