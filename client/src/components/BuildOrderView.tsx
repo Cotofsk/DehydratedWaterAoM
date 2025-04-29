@@ -93,8 +93,7 @@ const BuildOrderView: React.FC = () => {
   }
 
   return (
-    <div className="bg-parchment-light p-6 rounded-lg border-2 border-sandy-gold shadow-xl backdrop-blur-sm animate-fade-in relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('/papyrus-texture.png')] opacity-5 pointer-events-none"></div>
+    <div className="bg-parchment-light p-6 rounded-lg border-2 border-sandy-gold">
       <div className="flex justify-between items-start mb-6">
         <Button 
           onClick={goBack}
