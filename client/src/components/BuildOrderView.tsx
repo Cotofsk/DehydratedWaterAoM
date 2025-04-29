@@ -1,10 +1,12 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Scroll, Edit } from 'lucide-react';
+import { ArrowLeft, Edit } from 'lucide-react';
 import { fetchBuildOrder, fetchBuildOrderEntries } from '@/api/buildOrders';
 import { BuildOrder, BuildOrderEntry } from '@shared/schema';
 import EditBuildOrderDialog from './EditBuildOrderDialog';
+import { GreekCornerDecoration } from "@/assets/cornerDecorations";
 
 const BuildOrderView: React.FC = () => {
   const [buildOrder, setBuildOrder] = useState<BuildOrder | null>(null);
@@ -44,7 +46,6 @@ const BuildOrderView: React.FC = () => {
     setLocation('/');
   };
 
-  // Refresh data after edit
   const handleEditSuccess = async () => {
     if (!id) return;
 
@@ -64,7 +65,6 @@ const BuildOrderView: React.FC = () => {
     }
   };
 
-  // Handle delete (navigate back to list)
   const handleDelete = () => {
     goBack();
   };
@@ -72,15 +72,15 @@ const BuildOrderView: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center p-12">
-        <div className="text-earthy-dark">Loading build order details...</div>
+        <div className="text-sandy-gold">Loading build order details...</div>
       </div>
     );
   }
 
   if (error || !buildOrder) {
     return (
-      <div className="bg-parchment-light p-6 rounded-lg border-2 border-sandy-gold">
-        <div className="text-earthy-dark mb-4">{error || 'Build order not found'}</div>
+      <div className="bg-parchment p-6 rounded-lg border-2 border-sandy-gold">
+        <div className="text-sandy-gold mb-4">{error || 'Build order not found'}</div>
         <Button 
           onClick={goBack}
           className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light"
@@ -93,19 +93,32 @@ const BuildOrderView: React.FC = () => {
   }
 
   return (
-    <div className="bg-wood-dark/90 p-6 rounded-lg border-2 border-sandy-gold/30">
-      <div className="flex justify-between items-start mb-6">
+    <div className="bg-parchment bg-opacity-60 rounded-lg shadow-lg p-6 border-2 border-sandy-gold relative overflow-hidden">
+      {/* Decorative corners */}
+      <div className="absolute top-0 left-0 w-16 h-16 text-earthy-light opacity-40">
+        <GreekCornerDecoration />
+      </div>
+      <div className="absolute top-0 right-0 w-16 h-16 text-earthy-light opacity-40 transform rotate-90">
+        <GreekCornerDecoration />
+      </div>
+      <div className="absolute bottom-0 left-0 w-16 h-16 text-earthy-light opacity-40 transform -rotate-90">
+        <GreekCornerDecoration />
+      </div>
+      <div className="absolute bottom-0 right-0 w-16 h-16 text-earthy-light opacity-40 transform rotate-180">
+        <GreekCornerDecoration />
+      </div>
+
+      <div className="flex justify-between items-start mb-6 relative z-10">
         <Button 
           onClick={goBack}
-          variant="outline"
-          className="border-accent-gold/50 hover:bg-accent-gold/20 hover:text-accent-gold hover:border-accent-gold border-2"
+          className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back
         </Button>
 
         <div className="flex items-center gap-4">
-          <div className="flex flex-col bg-wood-dark rounded-lg p-3 shadow-md border border-sandy-gold/30">
+          <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold">
             <div className="text-sandy-gold text-lg font-medium">
               {buildOrder.civilization} - {buildOrder.god}
             </div>
@@ -116,7 +129,7 @@ const BuildOrderView: React.FC = () => {
 
           <Button
             onClick={() => setEditDialogOpen(true)}
-            className="bg-accent-gold/20 hover:bg-accent-gold/30 text-accent-gold border-2 border-accent-gold/50 h-full px-6 text-lg"
+            className="bg-accent-gold hover:bg-accent-dark text-parchment-light h-full px-6 text-lg"
           >
             <Edit className="h-5 w-5 mr-2" />
             Edit
@@ -124,69 +137,62 @@ const BuildOrderView: React.FC = () => {
         </div>
       </div>
 
-      <div className="mb-6">
-        <h1 className="text-2xl font-cinzel text-accent-gold font-bold mb-2">
+      <div className="mb-6 relative z-10">
+        <h1 className="text-2xl font-cinzel text-sandy-gold font-bold mb-2">
           {buildOrder.name}
         </h1>
-        <p className="text-sandy-gold/90">
+        <p className="text-sandy-gold">
           {buildOrder.description}
         </p>
       </div>
 
-      {entries.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-8 text-earthy-light">
-          <Scroll className="h-10 w-10 mb-4 opacity-40" />
-          <p>No steps have been added to this build order yet.</p>
-        </div>
-      ) : (
-        <div className="overflow-hidden rounded-lg border-2 border-sandy-gold/30">
-          <table className="min-w-full divide-y-2 divide-sandy-gold/30">
-            <thead className="bg-wood-dark/90">
-              <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-sandy-gold uppercase tracking-wider font-cinzel">
-                  #
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-sandy-gold uppercase tracking-wider font-cinzel">
-                  Main Action
-                </th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-sandy-gold uppercase tracking-wider font-cinzel">
-                  Details
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-wood-dark/80 divide-y-2 divide-sandy-gold/30">
-              {entries.map((entry) => (
-                <React.Fragment key={entry.id}>
-                  <tr className="hover:bg-wood-dark/95">
-                    <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-sandy-gold">
-                      {entry.sequence}
-                    </td>
-                    <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold/90 font-bold">
-                      {entry.mainAction}
-                    </td>
-                    <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold/80">
-                      {entry.villagerCount && (
-                        <span className="mr-2">👥 {entry.villagerCount}</span>
-                      )}
-                      {entry.population && (
-                        <span>Pop: {entry.population}</span>
-                      )}
+      <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10">
+        <table className="min-w-full divide-y-2 divide-sandy-gold/30">
+          <thead className="bg-sandy-gold">
+            <tr>
+              <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider font-cinzel">
+                #
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider font-cinzel">
+                Main Action
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider font-cinzel">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-parchment-light divide-y divide-sandy-gold/30">
+            {entries.map((entry) => (
+              <React.Fragment key={entry.id}>
+                <tr className="hover:bg-sandy-gold/10">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-sandy-gold">
+                    {entry.sequence}
+                  </td>
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold font-bold">
+                    {entry.mainAction}
+                  </td>
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold">
+                    {entry.villagerCount && (
+                      <span className="mr-2">👥 {entry.villagerCount}</span>
+                    )}
+                    {entry.population && (
+                      <span>Pop: {entry.population}</span>
+                    )}
+                  </td>
+                </tr>
+                {entry.miscellaneousAction && (
+                  <tr className="bg-sandy-gold/5">
+                    <td className="px-4 py-2 text-sm text-sandy-gold/60"></td>
+                    <td colSpan={2} className="px-4 py-2 text-sm text-sandy-gold/80 italic">
+                      {entry.miscellaneousAction}
                     </td>
                   </tr>
-                  {entry.miscellaneousAction && (
-                    <tr className="bg-wood-dark/70">
-                      <td className="px-4 py-2 text-sm text-sandy-gold/60"></td>
-                      <td colSpan={2} className="px-4 py-2 text-sm text-sandy-gold/60 italic">
-                        {entry.miscellaneousAction}
-                      </td>
-                    </tr>
-                  )}
-                </React.Fragment>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Edit Build Order Dialog */}
       {id && (
