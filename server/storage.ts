@@ -127,11 +127,23 @@ export class DatabaseStorage implements IStorage {
 
   // Build order entry operations
   async getBuildOrderEntries(buildOrderId: number): Promise<BuildOrderEntry[]> {
-    return await db
-      .select()
-      .from(buildOrderEntries)
-      .where(eq(buildOrderEntries.buildOrderId, buildOrderId))
-      .orderBy(asc(buildOrderEntries.sequence));
+    const entries = await db
+        .select({
+          id: buildOrderEntries.id,
+          buildOrderId: buildOrderEntries.buildOrderId,
+          sequence: buildOrderEntries.sequence,
+          mainAction: buildOrderEntries.mainAction,
+          miscellaneousAction: buildOrderEntries.miscellaneousAction,
+          notes: buildOrderEntries.notes,
+          food: buildOrderEntries.food,
+          wood: buildOrderEntries.wood,
+          gold: buildOrderEntries.gold
+        })
+        .from(buildOrderEntries)
+        .where(eq(buildOrderEntries.buildOrderId, buildOrderId))
+        .orderBy(asc(buildOrderEntries.sequence));
+      
+      return entries;
   }
 
   async getBuildOrderEntry(id: number): Promise<BuildOrderEntry | undefined> {
