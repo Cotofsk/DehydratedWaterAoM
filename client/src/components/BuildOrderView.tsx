@@ -174,7 +174,7 @@ const BuildOrderView: React.FC = () => {
                     {entry.sequence}
                   </td>
                   <td className="px-3 py-0.5 align-middle text-base text-sandy-light font-bold break-words">
-                    <div className="max-w-[400px]">{entry.mainAction}</div>
+                    <div className="max-w-[600px]">{entry.mainAction}</div>
                   </td>
                   <td className="px-3 py-0.5 align-middle whitespace-nowrap text-base text-sandy-light">
                     <div className="flex items-center justify-between">
