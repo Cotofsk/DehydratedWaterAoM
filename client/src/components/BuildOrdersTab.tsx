@@ -233,20 +233,12 @@ const BuildOrdersTab: React.FC = () => {
                   <TableCell className="px-4 py-3">{order.god}</TableCell>
                   <TableCell className="px-4 py-3">{order.type}</TableCell>
                   <TableCell className="px-4 py-3 text-center">
-                    <div className="flex items-center justify-center space-x-2">
+                    <div className="flex items-center justify-center">
                       <Button 
                         className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-3 py-1 h-8"
                         onClick={() => handleViewBuildOrder(order.id)}
                       >
                         <Eye className="h-4 w-4 mr-1" /> View
-                      </Button>
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
-                        className="bg-parchment-dark h-8 w-8 p-0 min-w-0"
-                        disabled
-                      >
-                        <Edit className="h-3 w-3" />
                       </Button>
                     </div>
                   </TableCell>
