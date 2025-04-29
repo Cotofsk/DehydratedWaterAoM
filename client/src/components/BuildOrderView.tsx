@@ -108,32 +108,32 @@ const BuildOrderView: React.FC = () => {
         <GreekCornerDecoration />
       </div>
 
-      <div className="flex justify-between items-start mb-6 relative z-10">
-        <Button 
-          onClick={goBack}
-          className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back
-        </Button>
-
-        <div className="flex items-center gap-4">
-          <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold">
-            <div className="text-sandy-gold text-lg font-medium">
-              {buildOrder.civilization} - {buildOrder.god}
-            </div>
-            <div className="text-sandy-gold/80 text-base mt-1">
-              {buildOrder.type}
-            </div>
-          </div>
-
+      <div className="flex flex-col items-center mb-6 relative z-10">
+        <div className="flex w-full justify-between mb-4">
           <Button
             onClick={() => setEditDialogOpen(true)}
-            className="bg-accent-gold hover:bg-accent-dark text-parchment-light h-full px-6 text-lg"
+            className="bg-accent-gold hover:bg-accent-dark text-parchment-light px-6 h-10"
           >
             <Edit className="h-5 w-5 mr-2" />
             Edit
           </Button>
+
+          <Button 
+            onClick={goBack}
+            className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-6 h-10"
+          >
+            <ArrowLeft className="h-5 w-5 mr-2" />
+            Back
+          </Button>
+        </div>
+
+        <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold">
+          <div className="text-sandy-gold text-lg font-medium">
+            {buildOrder.civilization} - {buildOrder.god}
+          </div>
+          <div className="text-sandy-gold/80 text-base mt-1">
+            {buildOrder.type}
+          </div>
         </div>
       </div>
 
@@ -146,17 +146,17 @@ const BuildOrderView: React.FC = () => {
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10">
-        <table className="min-w-full divide-y-2 divide-sandy-gold/30">
+      <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10 max-w-4xl mx-auto">
+        <table className="w-full divide-y-2 divide-sandy-gold/30">
           <thead className="bg-sandy-gold">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider font-cinzel">
+              <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider font-cinzel">
                 #
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider font-cinzel">
+              <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider font-cinzel">
                 Main Action
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-parchment-light uppercase tracking-wider font-cinzel">
+              <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider font-cinzel">
                 Details
               </th>
             </tr>
