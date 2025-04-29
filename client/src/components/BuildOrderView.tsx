@@ -161,17 +161,17 @@ const BuildOrderView: React.FC = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-parchment-light divide-y divide-sandy-gold/30">
+          <tbody className="bg-parchment-light divide-y divide-sandy-gold/20">
             {entries.map((entry) => (
               <React.Fragment key={entry.id}>
-                <tr className="hover:bg-sandy-gold/10">
-                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-sandy-gold">
+                <tr className="hover:bg-sandy-gold/5">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-sandy-gold/90">
                     {entry.sequence}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold font-bold">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold/90 font-bold">
                     {entry.mainAction}
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold">
+                  <td className="px-4 py-3 whitespace-nowrap text-sm text-sandy-gold/90">
                     {entry.villagerCount && (
                       <span className="mr-2">👥 {entry.villagerCount}</span>
                     )}
@@ -181,9 +181,9 @@ const BuildOrderView: React.FC = () => {
                   </td>
                 </tr>
                 {entry.miscellaneousAction && (
-                  <tr className="bg-sandy-gold/5">
-                    <td className="px-4 py-2 text-sm text-sandy-gold/60"></td>
-                    <td colSpan={2} className="px-4 py-2 text-sm text-sandy-gold/80 italic">
+                  <tr className="bg-sandy-gold/10">
+                    <td className="px-4 py-2 text-sm text-sandy-gold/70"></td>
+                    <td colSpan={2} className="px-4 py-2 text-sm text-sandy-gold font-medium italic">
                       {entry.miscellaneousAction}
                     </td>
                   </tr>
