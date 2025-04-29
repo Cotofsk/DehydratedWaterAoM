@@ -109,33 +109,22 @@ const BuildOrderView: React.FC = () => {
       </div>
 
       <div className="flex flex-col items-center relative z-10 px-20">
-        <div className="flex w-full gap-8 mb-6">
-          <div className="flex gap-2">
-            <Button 
-              onClick={goBack}
-              className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-6 h-10"
-            >
-              <ArrowLeft className="h-5 w-5 mr-2" />
-              Back
-            </Button>
+        <div className="flex w-full justify-between mb-6">
+          <Button 
+            onClick={goBack}
+            className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-6 h-10"
+          >
+            <ArrowLeft className="h-5 w-5 mr-2" />
+            Back
+          </Button>
 
-            <Button
-              onClick={() => setEditDialogOpen(true)}
-              className="bg-accent-gold hover:bg-accent-dark text-parchment-light px-6 h-10"
-            >
-              <Edit className="h-5 w-5 mr-2" />
-              Edit
-            </Button>
-          </div>
-
-          <div className="flex-1">
-            <h1 className="text-2xl font-cinzel text-sandy-gold font-bold mb-2">
-              {buildOrder.name}
-            </h1>
-            <p className="text-sandy-gold">
-              {buildOrder.description}
-            </p>
-          </div>
+          <Button
+            onClick={() => setEditDialogOpen(true)}
+            className="bg-accent-gold hover:bg-accent-dark text-parchment-light px-6 h-10"
+          >
+            <Edit className="h-5 w-5 mr-2" />
+            Edit
+          </Button>
         </div>
 
         <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold mb-3">
@@ -145,6 +134,15 @@ const BuildOrderView: React.FC = () => {
           <div className="text-sandy-gold/80 text-base mt-1 text-center">
             {buildOrder.type}
           </div>
+        </div>
+
+        <div className="mb-3 relative z-10 max-w-2xl mx-auto text-center">
+          <h1 className="text-2xl font-cinzel text-sandy-gold font-bold mb-2">
+            {buildOrder.name}
+          </h1>
+          <p className="text-sandy-gold">
+            {buildOrder.description}
+          </p>
         </div>
           </div>
 
