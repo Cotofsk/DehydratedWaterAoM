@@ -55,6 +55,7 @@ import {
   reorderBuildOrderEntries
 } from '@/api/buildOrders';
 import { BuildOrder, BuildOrderEntry } from '@shared/schema';
+import { godsByCivilization } from '@/data/buildOrders';
 
 // General Info Schema
 const generalInfoSchema = z.object({
