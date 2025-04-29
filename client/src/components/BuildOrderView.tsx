@@ -108,26 +108,8 @@ const BuildOrderView: React.FC = () => {
         <GreekCornerDecoration />
       </div>
 
-      <div className="flex flex-col items-center mb-4 relative z-10 px-20 mt-2">
-        <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold mb-4">
-          <div className="text-sandy-gold text-lg font-medium text-center">
-            {buildOrder.civilization} - {buildOrder.god}
-          </div>
-          <div className="text-sandy-gold/80 text-base mt-1 text-center">
-            {buildOrder.type}
-          </div>
-        </div>
-
-        <div className="mb-4 relative z-10 max-w-2xl mx-auto text-center">
-          <h1 className="text-2xl font-cinzel text-sandy-gold font-bold mb-2">
-            {buildOrder.name}
-          </h1>
-          <p className="text-sandy-gold">
-            {buildOrder.description}
-          </p>
-        </div>
-
-        <div className="flex w-full justify-between">
+      <div className="flex flex-col items-center relative z-10 px-20">
+        <div className="flex w-full justify-between mb-6">
           <Button 
             onClick={goBack}
             className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-6 h-10"
@@ -144,9 +126,28 @@ const BuildOrderView: React.FC = () => {
             Edit
           </Button>
         </div>
+
+        <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold mb-3">
+          <div className="text-sandy-gold text-lg font-medium text-center">
+            {buildOrder.civilization} - {buildOrder.god}
+          </div>
+          <div className="text-sandy-gold/80 text-base mt-1 text-center">
+            {buildOrder.type}
+          </div>
+        </div>
+
+        <div className="mb-3 relative z-10 max-w-2xl mx-auto text-center">
+          <h1 className="text-2xl font-cinzel text-sandy-gold font-bold mb-2">
+            {buildOrder.name}
+          </h1>
+          <p className="text-sandy-gold">
+            {buildOrder.description}
+          </p>
+        </div>
+          </div>
       </div>
 
-      <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10 max-w-4xl mx-auto">
+      <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10 max-w-4xl mx-auto mt-2">
         <table className="w-full divide-y-2 divide-sandy-gold/30">
           <thead className="bg-sandy-gold">
             <tr>
