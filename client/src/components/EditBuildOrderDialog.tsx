@@ -64,6 +64,9 @@ const entrySchema = z.object({
   miscellaneousAction: z.string().optional(),
   notes: z.string().optional(),
   isComplete: z.boolean().default(false),
+  food: z.number().default(0),
+  wood: z.number().default(0),
+  gold: z.number().default(0),
 });
 
 type GeneralInfoFormValues = z.infer<typeof generalInfoSchema>;
@@ -117,6 +120,9 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       miscellaneousAction: '',
       notes: '',
       isComplete: false,
+      food: 0,
+      wood: 0,
+      gold: 0,
     },
   });
 
@@ -128,6 +134,9 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       miscellaneousAction: '',
       notes: '',
       isComplete: false,
+      food: 0,
+      wood: 0,
+      gold: 0,
     },
   });
 
@@ -187,6 +196,9 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
           miscellaneousAction: selectedEntry.miscellaneousAction || '',
           notes: selectedEntry.notes || '',
           isComplete: selectedEntry.isComplete || false,
+          food: selectedEntry.food || 0,
+          wood: selectedEntry.wood || 0,
+          gold: selectedEntry.gold || 0,
         });
       }
     }
@@ -250,6 +262,9 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
         miscellaneousAction: '',
         notes: '',
         isComplete: false,
+        food: 0,
+        wood: 0,
+        gold: 0,
       });
 
       // Refetch entries
