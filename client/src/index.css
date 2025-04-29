@@ -89,7 +89,7 @@
   }
 
   body {
-    @apply bg-parchment-light text-wood font-marcellus antialiased;
+    @apply bg-background text-foreground font-marcellus antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
