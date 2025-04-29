@@ -145,8 +145,7 @@ const BuildOrderView: React.FC = () => {
           </p>
         </div>
           </div>
-      </div>
-      
+
       {/* Table section */}
       <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10 max-w-4xl mx-auto mt-2">
         <table className="w-full divide-y-2 divide-sandy-gold/30">
