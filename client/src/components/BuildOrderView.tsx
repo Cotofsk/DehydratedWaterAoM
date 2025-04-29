@@ -173,8 +173,28 @@ const BuildOrderView: React.FC = () => {
                   <td className="px-5 py-4 whitespace-nowrap text-base font-medium text-sandy-light">
                     {entry.sequence}
                   </td>
-                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light font-bold">
-                    {entry.mainAction}
+                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light font-bold flex items-center justify-between">
+                    <span>{entry.mainAction}</span>
+                    <div className="flex items-center gap-4 mr-4">
+                      {entry.foodCount !== null && (
+                        <div className="flex flex-col items-center">
+                          <img src="/src/assets/resources/food.png" alt="Food" className="w-6 h-6" />
+                          <span className="text-sm">{entry.foodCount}</span>
+                        </div>
+                      )}
+                      {entry.woodCount !== null && (
+                        <div className="flex flex-col items-center">
+                          <img src="/src/assets/resources/wood.png" alt="Wood" className="w-6 h-6" />
+                          <span className="text-sm">{entry.woodCount}</span>
+                        </div>
+                      )}
+                      {entry.goldCount !== null && (
+                        <div className="flex flex-col items-center">
+                          <img src="/src/assets/resources/gold.png" alt="Gold" className="w-6 h-6" />
+                          <span className="text-sm">{entry.goldCount}</span>
+                        </div>
+                      )}
+                    </div>
                   </td>
                   <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light flex items-center gap-2">
                     {entry.villagerCount && (
