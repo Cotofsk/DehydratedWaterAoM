@@ -163,9 +163,9 @@ const BuildOrdersTab: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-sandy-gold/5 to-transparent pointer-events-none"></div>
         <Table className="min-w-full bg-parchment/90 backdrop-blur-sm">
           <TableHeader className="sticky top-0 z-10">
-            <TableRow className="bg-sandy-gold/90 text-wood-dark">
+            <TableRow className="bg-sandy-gold/90 text-white">
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer text-wood-dark"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-white"
                 onClick={() => requestSort('name')}
               >
                 <div className="flex items-center">
@@ -178,7 +178,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer text-wood-dark"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-white"
                 onClick={() => requestSort('civilization')}
               >
                 <div className="flex items-center">
@@ -191,7 +191,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer text-wood-dark"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-white"
                 onClick={() => requestSort('god')}
               >
                 <div className="flex items-center">
@@ -204,7 +204,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer text-wood-dark"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-white"
                 onClick={() => requestSort('type')}
               >
                 <div className="flex items-center">
@@ -216,23 +216,23 @@ const BuildOrdersTab: React.FC = () => {
                   )}
                 </div>
               </TableHead>
-              <TableHead className="px-4 py-3 text-center font-cinzel text-wood-dark">Actions</TableHead>
+              <TableHead className="px-4 py-3 text-center text-white">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredBuildOrders.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-4 text-wood-dark">
+                <TableCell colSpan={5} className="text-center py-4 text-white">
                   No build orders found matching your criteria.
                 </TableCell>
               </TableRow>
             ) : (
               filteredBuildOrders.map((order: BuildOrder) => (
                 <TableRow key={order.id} className="border-b border-sandy-gold hover:bg-parchment-dark transition-colors">
-                  <TableCell className="px-4 py-3 font-semibold text-wood-dark">{order.name}</TableCell>
-                  <TableCell className="px-4 py-3 text-wood-dark">{order.civilization}</TableCell>
-                  <TableCell className="px-4 py-3 text-wood-dark">{order.god}</TableCell>
-                  <TableCell className="px-4 py-3 text-wood-dark">{order.type}</TableCell>
+                  <TableCell className="px-4 py-3 font-semibold text-white">{order.name}</TableCell>
+                  <TableCell className="px-4 py-3 text-white">{order.civilization}</TableCell>
+                  <TableCell className="px-4 py-3 text-white">{order.god}</TableCell>
+                  <TableCell className="px-4 py-3 text-white">{order.type}</TableCell>
                   <TableCell className="px-4 py-3 text-center">
                     <div className="flex items-center justify-center">
                       <Button 
