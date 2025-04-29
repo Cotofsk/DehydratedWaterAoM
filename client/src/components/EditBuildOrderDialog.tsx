@@ -232,6 +232,13 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   const onCreateEntry = async (data: EntryFormValues & { food?: number; wood?: number; gold?: number }) => {
     if (!buildOrderId) return;
 
+    const entryData = {
+      ...data,
+      food: data.food || 0,
+      wood: data.wood || 0,
+      gold: data.gold || 0
+    };
+
     try {
       setSaving(true);
       setError(null);
@@ -279,8 +286,15 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(true);
       setError(null);
 
+      const entryData = {
+        ...data,
+        food: data.food || 0,
+        wood: data.wood || 0,
+        gold: data.gold || 0
+      };
+
       // Update entry
-      await updateBuildOrderEntry(selectedEntryId, data);
+      await updateBuildOrderEntry(selectedEntryId, entryData);
 
       // Reset selected entry
       setSelectedEntryId(null);
