@@ -5,43 +5,43 @@
 @tailwind utilities;
 
 :root {
-  --background: 84 29% 11%;
-  --foreground: 35 40% 70%;
-  --muted: 84 20% 15%;
-  --muted-foreground: 35 25% 60%;
-  --popover: 84 29% 11%;
-  --popover-foreground: 35 40% 70%;
-  --card: 84 25% 15%;
-  --card-foreground: 35 40% 70%;
-  --border: 35 40% 30%;
-  --input: 84 20% 20%;
-  --primary: 35 65% 45%;
-  --primary-foreground: 84 10% 10%;
-  --secondary: 84 20% 20%;
-  --secondary-foreground: 35 40% 70%;
-  --accent: 35 80% 45%;
-  --accent-foreground: 84 10% 10%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 35 65% 45%;
-  --radius: 0.3rem;
+  --background: 36 33% 90%;
+  --foreground: 30 10% 22%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 39 38% 88%;
+  --card-foreground: 30 10% 22%;
+  --border: 30 29% 70%;
+  --input: 30 29% 70%;
+  --primary: 35 65% 50%;
+  --primary-foreground: 36 33% 97%;
+  --secondary: 30 10% 95%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 35 80% 50%;
+  --accent-foreground: 36 33% 97%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 35 65% 50%;
+  --radius: 0.5rem;
 
   /* Custom theme colors */
-  --earthy-brown: 35 50% 36%;
-  --earthy-light: 35 34% 49%;
-  --earthy-dark: 35 50% 28%; 
-  --sandy-gold: 35 60% 53%;
-  --sandy-light: 35 60% 65%;
-  --sandy-dark: 35 60% 44%;
-  --accent-gold: 35 74% 49%;
-  --accent-light: 35 80% 67%;
-  --accent-dark: 35 74% 41%;
-  --parchment-light: 35 30% 96%;
-  --parchment: 35 38% 88%;
-  --parchment-dark: 35 38% 70%;
-  --wood: 35 24% 19%;
-  --wood-light: 35 24% 29%;
-  --wood-dark: 35 24% 14%;
+  --earthy-brown: 30 50% 36%;
+  --earthy-light: 30 34% 49%;
+  --earthy-dark: 30 50% 28%; 
+  --sandy-gold: 33 60% 53%;
+  --sandy-light: 33 60% 65%;
+  --sandy-dark: 33 60% 44%;
+  --accent-gold: 43 74% 49%;
+  --accent-light: 43 80% 67%;
+  --accent-dark: 43 74% 41%;
+  --parchment-light: 60 30% 96%;
+  --parchment: 39 38% 88%;
+  --parchment-dark: 39 38% 70%;
+  --wood: 28 24% 19%;
+  --wood-light: 28 24% 29%;
+  --wood-dark: 28 24% 14%;
 }
 
 .dark {
@@ -88,12 +88,8 @@
     @apply border-border;
   }
 
-  :root {
-    @apply dark;
-  }
-
   body {
-    @apply bg-background text-foreground font-marcellus antialiased;
+    @apply bg-parchment-light text-wood font-marcellus antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -125,11 +121,11 @@
   .scroll-design::-webkit-scrollbar {
     width: 12px;
   }
-
+  
   .scroll-design::-webkit-scrollbar-track {
     background: hsl(var(--parchment));
   }
-
+  
   .scroll-design::-webkit-scrollbar-thumb {
     background-color: hsl(var(--earthy-brown));
     border-radius: 6px;
@@ -174,7 +170,7 @@
   .bg-parchment-dark {
     background-color: hsl(var(--parchment-dark));
   }
-
+  
   .text-earthy-brown {
     color: hsl(var(--earthy-brown));
   }
@@ -202,11 +198,11 @@
   .text-wood {
     color: hsl(var(--wood));
   }
-
+  
   .border-sandy-gold {
     border-color: hsl(var(--sandy-gold));
   }
-
+  
   .tab-hover:hover {
     background-color: rgba(205, 133, 63, 0.2);
   }
