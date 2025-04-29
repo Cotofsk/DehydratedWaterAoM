@@ -244,7 +244,7 @@ const BuildOrdersTab: React.FC = () => {
                         size="sm" 
                         variant="outline" 
                         className="bg-parchment-dark h-8 w-8 p-0 min-w-0"
-                        onClick={() => handleViewBuildOrder(order.id)}
+                        disabled
                       >
                         <Edit className="h-3 w-3" />
                       </Button>
