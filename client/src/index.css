@@ -89,11 +89,23 @@
   }
 
   body {
-    @apply bg-parchment-light text-wood font-marcellus antialiased;
+    @apply bg-parchment-light text-wood font-marcellus antialiased bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCA4MCI+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] bg-repeat bg-[length:80px_80px];
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-cinzel font-bold;
+    @apply font-cinzel font-bold tracking-wide;
+  }
+
+  .scroll-design::-webkit-scrollbar {
+    @apply w-3;
+  }
+  
+  .scroll-design::-webkit-scrollbar-track {
+    @apply bg-parchment border border-sandy-gold/30;
+  }
+  
+  .scroll-design::-webkit-scrollbar-thumb {
+    @apply bg-sandy-gold hover:bg-sandy-dark rounded-full border-2 border-parchment;
   }
 }
 

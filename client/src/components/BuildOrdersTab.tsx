@@ -159,8 +159,9 @@ const BuildOrdersTab: React.FC = () => {
       </div>
 
       {/* Build orders table with scrolling */}
-      <div className="overflow-x-auto overflow-y-auto max-h-[400px] scroll-design rounded-lg border-2 border-sandy-gold">
-        <Table className="min-w-full bg-parchment bg-opacity-50">
+      <div className="overflow-x-auto overflow-y-auto max-h-[400px] scroll-design rounded-lg border-2 border-sandy-gold shadow-lg relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-sandy-gold/5 to-transparent pointer-events-none"></div>
+        <Table className="min-w-full bg-parchment/90 backdrop-blur-sm">
           <TableHeader className="sticky top-0 z-10">
             <TableRow className="bg-earthy-brown text-parchment-light">
               <TableHead 
