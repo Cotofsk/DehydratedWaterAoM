@@ -488,6 +488,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         <FormControl>
                           <Input 
                             {...field} 
+                            autoComplete="off"
                             className="bg-parchment-light border-2 border-sandy-gold" 
                           />
                         </FormControl>
@@ -506,6 +507,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           <FormControl>
                             <Input 
                               {...field} 
+                              autoComplete="off"
                               className="bg-parchment-light border-2 border-sandy-gold" 
                             />
                           </FormControl>
@@ -523,6 +525,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           <FormControl>
                             <Input 
                               {...field} 
+                              autoComplete="off"
                               className="bg-parchment-light border-2 border-sandy-gold" 
                             />
                           </FormControl>
@@ -540,6 +543,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           <FormControl>
                             <Input 
                               {...field} 
+                              autoComplete="off"
                               className="bg-parchment-light border-2 border-sandy-gold" 
                             />
                           </FormControl>
@@ -558,6 +562,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         <FormControl>
                           <Textarea 
                             {...field} 
+                            autoComplete="off"
                             className="bg-parchment-light border-2 border-sandy-gold min-h-[100px]" 
                           />
                         </FormControl>
@@ -734,6 +739,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         <FormControl>
                           <Input 
                             {...field} 
+                            autoComplete="off"
                             placeholder="e.g., Build 3 villagers" 
                             className="bg-parchment-light border-2 border-sandy-gold" 
                           />
@@ -752,6 +758,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         <FormControl>
                           <Input 
                             {...field} 
+                            autoComplete="off"
                             placeholder="e.g., Scout for food sources" 
                             className="bg-parchment-light border-2 border-sandy-gold" 
                           />
@@ -774,6 +781,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                               <Input 
                                 type="number"
                                 {...field}
+                                autoComplete="off"
                                 value={field.value || ''}
                                 onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
                                 className="bg-parchment-light border-2 border-sandy-gold w-24"
@@ -794,6 +802,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                               <Input 
                                 type="number"
                                 {...field}
+                                autoComplete="off"
                                 value={field.value || ''}
                                 onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
                                 className="bg-parchment-light border-2 border-sandy-gold w-24"
@@ -814,6 +823,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                               <Input 
                                 type="number"
                                 {...field}
+                                autoComplete="off"
                                 value={field.value || ''}
                                 onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
                                 className="bg-parchment-light border-2 border-sandy-gold w-24"
@@ -834,6 +844,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         <FormControl>
                           <Textarea 
                             {...field} 
+                            autoComplete="off"
                             placeholder="Additional notes about this step" 
                             className="bg-parchment-light border-2 border-sandy-gold min-h-[80px]" 
                           />
@@ -882,6 +893,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           <FormControl>
                             <Input 
                               {...field} 
+                              autoComplete="off"
                               className="bg-parchment-light border-2 border-sandy-gold" 
                             />
                           </FormControl>
@@ -899,6 +911,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           <FormControl>
                             <Input 
                               {...field} 
+                              autoComplete="off"
                               className="bg-parchment-light border-2 border-sandy-gold" 
                             />
                           </FormControl>
@@ -919,6 +932,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                                 <Input 
                                   type="number"
                                   {...field}
+                                  autoComplete="off"
                                   value={field.value || ''}
                                   onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
                                   className="bg-parchment-light border-2 border-sandy-gold w-24"
@@ -939,6 +953,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                                 <Input 
                                   type="number"
                                   {...field}
+                                  autoComplete="off"
                                   value={field.value || ''}
                                   onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
                                   className="bg-parchment-light border-2 border-sandy-gold w-24"
@@ -959,6 +974,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                                 <Input 
                                   type="number"
                                   {...field}
+                                  autoComplete="off"
                                   value={field.value || ''}
                                   onChange={e => field.onChange(e.target.value ? Number(e.target.value) : 0)}
                                   className="bg-parchment-light border-2 border-sandy-gold w-24"
@@ -978,7 +994,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           <FormLabel className="text-white">Notes (Optional)</FormLabel>
                           <FormControl>
                             <Textarea 
-                              {...field} 
+                              {...field} autoComplete="off"
                               className="bg-parchment-light border-2 border-sandy-gold min-h-[80px]" 
                             />
                           </FormControl>
