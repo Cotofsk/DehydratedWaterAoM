@@ -109,32 +109,12 @@ const BuildOrderView: React.FC = () => {
       </div>
 
       <div className="flex flex-col items-center relative z-10 px-20">
-        <div className="flex w-full gap-4 mb-6">
-          <div className="flex gap-2">
-            <Button 
-              onClick={goBack}
-              className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-6 h-10"
-            >
-              <ArrowLeft className="h-5 w-5 mr-2" />
-              Back
-            </Button>
-
-            <Button
-              onClick={() => setEditDialogOpen(true)}
-              className="bg-accent-gold hover:bg-accent-dark text-parchment-light px-6 h-10"
-            >
-              <Edit className="h-5 w-5 mr-2" />
-              Edit
-            </Button>
+        <div className="flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold mb-3">
+          <div className="text-sandy-gold text-lg font-medium text-center">
+            {buildOrder.civilization} - {buildOrder.god}
           </div>
-
-          <div className="flex-1 flex flex-col bg-sandy-gold/20 rounded-lg p-3 shadow-md border border-sandy-gold">
-            <div className="text-sandy-gold text-lg font-medium text-center">
-              {buildOrder.civilization} - {buildOrder.god}
-            </div>
-            <div className="text-sandy-gold/80 text-base mt-1 text-center">
-              {buildOrder.type}
-            </div>
+          <div className="text-sandy-gold/80 text-base mt-1 text-center">
+            {buildOrder.type}
           </div>
         </div>
 
@@ -145,6 +125,24 @@ const BuildOrderView: React.FC = () => {
           <p className="text-sandy-gold">
             {buildOrder.description}
           </p>
+        </div>
+
+        <div className="flex w-full justify-between mb-6">
+          <Button 
+            onClick={goBack}
+            className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light px-6 h-10"
+          >
+            <ArrowLeft className="h-5 w-5 mr-2" />
+            Back
+          </Button>
+
+          <Button
+            onClick={() => setEditDialogOpen(true)}
+            className="bg-accent-gold hover:bg-accent-dark text-parchment-light px-6 h-10"
+          >
+            <Edit className="h-5 w-5 mr-2" />
+            Edit
+          </Button>
         </div>
           </div>
 
