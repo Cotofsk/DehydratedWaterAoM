@@ -187,6 +187,9 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
           miscellaneousAction: selectedEntry.miscellaneousAction || '',
           notes: selectedEntry.notes || '',
           isComplete: selectedEntry.isComplete || false,
+          food: selectedEntry.food || 0,
+          wood: selectedEntry.wood || 0,
+          gold: selectedEntry.gold || 0,
         });
       }
     }
@@ -226,7 +229,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   };
 
   // Handle create entry
-  const onCreateEntry = async (data: EntryFormValues) => {
+  const onCreateEntry = async (data: EntryFormValues & { food?: number; wood?: number; gold?: number }) => {
     if (!buildOrderId) return;
 
     try {
@@ -269,7 +272,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   };
 
   // Handle update entry
-  const onUpdateEntry = async (data: EntryFormValues) => {
+  const onUpdateEntry = async (data: EntryFormValues & { food?: number; wood?: number; gold?: number }) => {
     if (!selectedEntryId) return;
 
     try {
