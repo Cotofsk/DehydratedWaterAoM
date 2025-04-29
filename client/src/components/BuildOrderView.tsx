@@ -201,19 +201,19 @@ const BuildOrderView: React.FC = () => {
                           <div className="w-[32px] h-[32px] relative">
                             <img src="/images/food.png" alt="Food" className="w-full h-full object-cover" />
                           </div>
-                          <span className="text-base font-bold leading-none">0</span>
+                          <span className="text-base font-bold leading-none">{entry.food || 0}</span>
                         </div>
                         <div className="flex flex-col items-center">
                           <div className="w-[32px] h-[32px] relative">
                             <img src="/images/wood.png" alt="Wood" className="w-full h-full object-cover" />
                           </div>
-                          <span className="text-base font-bold leading-none">0</span>
+                          <span className="text-base font-bold leading-none">{entry.wood || 0}</span>
                         </div>
                         <div className="flex flex-col items-center">
                           <div className="w-[32px] h-[32px] relative">
                             <img src="/images/gold.png" alt="Gold" className="w-full h-full object-cover" />
                           </div>
-                          <span className="text-base font-bold leading-none">0</span>
+                          <span className="text-base font-bold leading-none">{entry.gold || 0}</span>
                         </div>
                       </div>
                     </div>

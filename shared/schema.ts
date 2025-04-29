@@ -32,6 +32,9 @@ export const buildOrderEntries = pgTable("build_order_entries", {
   mainAction: text("main_action").notNull(), // Main row content
   miscellaneousAction: text("miscellaneous_action"), // Optional row content
   notes: text("notes"), // Optional notes
+  food: integer("food"), // Food resource
+  wood: integer("wood"), // Wood resource
+  gold: integer("gold"), // Gold resource
 });
 
 // Define relations between tables
