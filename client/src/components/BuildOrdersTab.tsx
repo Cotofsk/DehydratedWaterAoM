@@ -56,7 +56,7 @@ const BuildOrdersTab: React.FC = () => {
         order.civilization.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.god.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.type.toLowerCase().includes(searchTerm.toLowerCase());
-      
+
       const matchesCivilization = 
         civilizationFilter === "all" || 
         order.civilization === civilizationFilter;
@@ -64,7 +64,7 @@ const BuildOrdersTab: React.FC = () => {
       const matchesGod =
         godFilter === "all" ||
         order.god === godFilter;
-      
+
       return matchesSearch && matchesCivilization && matchesGod;
     });
   }, [sortedItems, searchTerm, civilizationFilter, godFilter]);
@@ -95,7 +95,7 @@ const BuildOrdersTab: React.FC = () => {
   const handleCreateBuildOrder = () => {
     setCreateDialogOpen(true);
   };
-  
+
   // Handle successful creation
   const handleCreateSuccess = () => {
     refetch();
@@ -109,7 +109,7 @@ const BuildOrdersTab: React.FC = () => {
     <div>
       <div className="flex flex-col md:flex-row justify-between items-center mb-6">
         <h2 className="text-2xl font-cinzel font-bold text-earthy-dark mb-4 md:mb-0">Build Orders</h2>
-        
+
         {/* Filter and search controls */}
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
           <Select 
@@ -128,7 +128,7 @@ const BuildOrdersTab: React.FC = () => {
               ))}
             </SelectContent>
           </Select>
-          
+
           <Select 
             value={godFilter} 
             onValueChange={setGodFilter}
@@ -145,7 +145,7 @@ const BuildOrdersTab: React.FC = () => {
               ))}
             </SelectContent>
           </Select>
-          
+
           <div className="relative">
             <Input
               type="text"
@@ -162,9 +162,9 @@ const BuildOrdersTab: React.FC = () => {
       <div className="overflow-x-auto overflow-y-auto max-h-[400px] scroll-design rounded-lg border-2 border-sandy-gold">
         <Table className="min-w-full bg-parchment bg-opacity-50">
           <TableHeader className="sticky top-0 z-10">
-            <TableRow className="bg-earthy-brown text-parchment-light">
+            <TableRow className="bg-[#4d3f28] text-[#e8d5b5]">
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-base text-[#e8d5b5]"
                 onClick={() => requestSort('name')}
               >
                 <div className="flex items-center">
@@ -177,7 +177,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-base text-[#e8d5b5]"
                 onClick={() => requestSort('civilization')}
               >
                 <div className="flex items-center">
@@ -190,7 +190,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-base text-[#e8d5b5]"
                 onClick={() => requestSort('god')}
               >
                 <div className="flex items-center">
@@ -203,7 +203,7 @@ const BuildOrdersTab: React.FC = () => {
                 </div>
               </TableHead>
               <TableHead 
-                className="px-4 py-3 text-left font-cinzel cursor-pointer"
+                className="px-4 py-3 text-left font-cinzel cursor-pointer text-base text-[#e8d5b5]"
                 onClick={() => requestSort('type')}
               >
                 <div className="flex items-center">
@@ -215,7 +215,7 @@ const BuildOrdersTab: React.FC = () => {
                   )}
                 </div>
               </TableHead>
-              <TableHead className="px-4 py-3 text-center font-cinzel">Actions</TableHead>
+              <TableHead className="px-4 py-3 text-center font-cinzel text-base text-[#e8d5b5]">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -259,7 +259,7 @@ const BuildOrdersTab: React.FC = () => {
           Create Build Order
         </Button>
       </div>
-      
+
       {/* Create Build Order Dialog */}
       <CreateBuildOrderDialog 
         open={createDialogOpen}
