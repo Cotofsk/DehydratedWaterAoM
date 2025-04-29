@@ -624,11 +624,11 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       {entries.map((entry, index) => (
                         <React.Fragment key={entry.id}>
                           <TableRow className={entry.isComplete ? 'bg-success-50' : ''}>
-                            <TableCell className="font-medium text-center">
+                            <TableCell className="font-medium text-center text-sandy-gold">
                               {entry.sequence}
                             </TableCell>
-                            <TableCell>{entry.mainAction}</TableCell>
-                            <TableCell>
+                            <TableCell className="text-sandy-gold">{entry.mainAction}</TableCell>
+                            <TableCell className="text-sandy-gold">
                               {/* Removed time, villagerCount, agePhase, and population display */}
                             </TableCell>
                             <TableCell>
