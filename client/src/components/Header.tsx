@@ -6,9 +6,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
-    <header className="mb-8 relative py-12 w-full bg-wood-dark/80 border-y border-sandy-gold/30">
+    <header className="mb-8 relative py-12 w-screen bg-wood-dark/80 border-y border-sandy-gold/30">
       <div className="absolute inset-0 bg-gradient-to-b from-sandy-gold/10 via-sandy-gold/5 to-transparent pointer-events-none"></div>
-      <div className="max-w-screen-2xl mx-auto px-4 relative">
+      <div className="w-full max-w-[100vw] px-4 relative">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sandy-gold to-transparent opacity-50"></div>
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-sandy-gold to-transparent opacity-50"></div>
         
