@@ -16,6 +16,7 @@ export default {
       },
       colors: {
         "sandy-gold": "hsl(var(--sandy-gold))",
+        "parchment": "hsl(var(--parchment))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
