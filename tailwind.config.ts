@@ -15,6 +15,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        "wood": "hsl(var(--wood))",
+        "wood-light": "hsl(var(--wood-light))",
+        "wood-dark": "hsl(var(--wood-dark))",
         "sandy-gold": "hsl(var(--sandy-gold))",
         "parchment": "hsl(var(--parchment))",
         background: "hsl(var(--background))",
