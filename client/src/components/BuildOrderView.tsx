@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Edit } from 'lucide-react';
+import { ArrowLeft, Edit, Info } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { fetchBuildOrder, fetchBuildOrderEntries } from '@/api/buildOrders';
 import { BuildOrder, BuildOrderEntry } from '@shared/schema';
 import EditBuildOrderDialog from './EditBuildOrderDialog';
@@ -172,12 +177,22 @@ const BuildOrderView: React.FC = () => {
                   <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light font-bold">
                     {entry.mainAction}
                   </td>
-                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light">
+                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light flex items-center gap-2">
                     {entry.villagerCount && (
                       <span className="mr-2">👥 {entry.villagerCount}</span>
                     )}
                     {entry.population && (
                       <span>Pop: {entry.population}</span>
+                    )}
+                    {entry.notes && (
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-5 w-5 text-sandy-light hover:text-sandy-gold transition-colors" />
+                        </TooltipTrigger>
+                        <TooltipContent className="bg-sandy-gold text-parchment-light">
+                          {entry.notes}
+                        </TooltipContent>
+                      </Tooltip>
                     )}
                   </td>
                 </tr>
