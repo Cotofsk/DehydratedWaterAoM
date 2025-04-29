@@ -187,9 +187,6 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
           miscellaneousAction: selectedEntry.miscellaneousAction || '',
           notes: selectedEntry.notes || '',
           isComplete: selectedEntry.isComplete || false,
-          food: selectedEntry.food || 0,
-          wood: selectedEntry.wood || 0,
-          gold: selectedEntry.gold || 0,
         });
       }
     }
@@ -229,21 +226,8 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   };
 
   // Handle create entry
-  const onCreateEntry = async (data: EntryFormValues & { food?: number; wood?: number; gold?: number }) => {
+  const onCreateEntry = async (data: EntryFormValues) => {
     if (!buildOrderId) return;
-
-    console.log("Creating entry with data:", data); // Debug log
-
-    const entryData = {
-      buildOrderId,
-      mainAction: data.mainAction,
-      miscellaneousAction: data.miscellaneousAction,
-      notes: data.notes,
-      isComplete: data.isComplete,
-      food: Number(data.food) || 0,
-      wood: Number(data.wood) || 0, 
-      gold: Number(data.gold) || 0
-    };
 
     try {
       setSaving(true);
@@ -285,27 +269,15 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   };
 
   // Handle update entry
-  const onUpdateEntry = async (data: EntryFormValues & { food?: number; wood?: number; gold?: number }) => {
+  const onUpdateEntry = async (data: EntryFormValues) => {
     if (!selectedEntryId) return;
 
     try {
       setSaving(true);
       setError(null);
 
-      console.log("Updating entry with data:", data); // Debug log
-
-      const entryData = {
-        mainAction: data.mainAction,
-        miscellaneousAction: data.miscellaneousAction,
-        notes: data.notes,
-        isComplete: data.isComplete,
-        food: Number(data.food) || 0,
-        wood: Number(data.wood) || 0,
-        gold: Number(data.gold) || 0
-      };
-
       // Update entry
-      await updateBuildOrderEntry(selectedEntryId, entryData);
+      await updateBuildOrderEntry(selectedEntryId, data);
 
       // Reset selected entry
       setSelectedEntryId(null);
@@ -793,33 +765,6 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     )}
                   />
 
-                  <div className="flex gap-4 pt-4">
-                    <div className="flex flex-col items-center">
-                      <img src="/images/food.png" alt="Food" className="w-[32px] h-[32px] mb-2" />
-                      <Input
-                        type="number"
-                        {...entryForm.register('food')}
-                        className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
-                      />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <img src="/images/wood.png" alt="Wood" className="w-[32px] h-[32px] mb-2" />
-                      <Input
-                        type="number"
-                        {...entryForm.register('wood')}
-                        className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
-                      />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <img src="/images/gold.png" alt="Gold" className="w-[32px] h-[32px] mb-2" />
-                      <Input
-                        type="number"
-                        {...entryForm.register('gold')}
-                        className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
-                      />
-                    </div>
-                  </div>
-
                   <div className="flex justify-end gap-2 pt-4">
                     <Button
                       type="button"
@@ -900,33 +845,6 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-
-                    <div className="flex gap-4 pt-4">
-                      <div className="flex flex-col items-center">
-                        <img src="/images/food.png" alt="Food" className="w-[32px] h-[32px] mb-2" />
-                        <Input
-                          type="number"
-                          {...editEntryForm.register('food')}
-                          className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <img src="/images/wood.png" alt="Wood" className="w-[32px] h-[32px] mb-2" />
-                        <Input
-                          type="number"
-                          {...editEntryForm.register('wood')}
-                          className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
-                        />
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <img src="/images/gold.png" alt="Gold" className="w-[32px] h-[32px] mb-2" />
-                        <Input
-                          type="number"
-                          {...editEntryForm.register('gold')}
-                          className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
-                        />
-                      </div>
-                    </div>
 
                     <div className="flex justify-between pt-4">
                       <Button
