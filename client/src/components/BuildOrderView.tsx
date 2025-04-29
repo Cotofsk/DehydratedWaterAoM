@@ -194,7 +194,6 @@ const BuildOrderView: React.FC = () => {
           </tbody>
         </table>
       </div>
-      </>
 
       {/* Edit Build Order Dialog */}
       {id && (
