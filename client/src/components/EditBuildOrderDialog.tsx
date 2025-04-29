@@ -232,11 +232,17 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   const onCreateEntry = async (data: EntryFormValues & { food?: number; wood?: number; gold?: number }) => {
     if (!buildOrderId) return;
 
+    console.log("Creating entry with data:", data); // Debug log
+
     const entryData = {
-      ...data,
-      food: data.food || 0,
-      wood: data.wood || 0,
-      gold: data.gold || 0
+      buildOrderId,
+      mainAction: data.mainAction,
+      miscellaneousAction: data.miscellaneousAction,
+      notes: data.notes,
+      isComplete: data.isComplete,
+      food: Number(data.food) || 0,
+      wood: Number(data.wood) || 0, 
+      gold: Number(data.gold) || 0
     };
 
     try {
@@ -286,11 +292,16 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(true);
       setError(null);
 
+      console.log("Updating entry with data:", data); // Debug log
+
       const entryData = {
-        ...data,
-        food: data.food || 0,
-        wood: data.wood || 0,
-        gold: data.gold || 0
+        mainAction: data.mainAction,
+        miscellaneousAction: data.miscellaneousAction,
+        notes: data.notes,
+        isComplete: data.isComplete,
+        food: Number(data.food) || 0,
+        wood: Number(data.wood) || 0,
+        gold: Number(data.gold) || 0
       };
 
       // Update entry
