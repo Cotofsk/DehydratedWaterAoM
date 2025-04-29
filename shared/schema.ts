@@ -28,7 +28,7 @@ export const buildOrders = pgTable("build_orders", {
 export const buildOrderEntries = pgTable("build_order_entries", {
   id: serial("id").primaryKey(),
   buildOrderId: integer("build_order_id").notNull().references(() => buildOrders.id, { onDelete: "cascade" }),
-  sequence: integer("sequence").notNull(), // Order in which entries appear
+  sequence: integer("sequence").default(0), // Order in which entries appear
   mainAction: text("main_action").notNull(), // Main row content
   miscellaneousAction: text("miscellaneous_action"), // Optional row content
   villagerCount: integer("villager_count"), // Optional villager count
