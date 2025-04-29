@@ -7,21 +7,15 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <header className="mb-8 relative">
-      <div className="column-decor">
-        <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-center text-earthy-brown my-6">
-          {title}
-        </h1>
+      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        <div className="w-32 h-32 bg-[url('/ancient-symbol.png')] bg-contain bg-no-repeat"></div>
       </div>
-      
-      {/* Decorative elements */}
-      <div 
-        className="absolute top-2 left-2 md:left-10 w-16 h-16 opacity-10 bg-contain bg-no-repeat bg-center"
-        style={{backgroundImage: "url('https://images.unsplash.com/photo-1559589289-0d3c74c8598e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"}}
-      ></div>
-      <div 
-        className="absolute top-2 right-2 md:right-10 w-16 h-16 opacity-10 bg-contain bg-no-repeat bg-center transform rotate-180"
-        style={{backgroundImage: "url('https://images.unsplash.com/photo-1559589289-0d3c74c8598e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80')"}}
-      ></div>
+      <h1 className="text-4xl font-cinzel text-center text-earthy-dark relative z-10 py-4">
+        <span className="bg-gradient-to-r from-sandy-gold via-accent-gold to-sandy-gold bg-clip-text text-transparent">
+          {title}
+        </span>
+      </h1>
+      <div className="h-1 w-48 mx-auto bg-gradient-to-r from-transparent via-sandy-gold to-transparent"></div>
     </header>
   );
 };

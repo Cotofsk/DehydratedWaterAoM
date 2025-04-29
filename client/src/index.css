@@ -85,15 +85,28 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
 
   body {
-    @apply bg-parchment-light text-wood font-marcellus antialiased;
+    @apply bg-parchment-light text-wood font-marcellus antialiased bg-[url('/ancient-pattern.png')] bg-repeat;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-cinzel font-bold;
+    @apply font-cinzel font-bold tracking-wider;
+  }
+
+  h1 {
+    @apply text-4xl mb-6 text-earthy-dark;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
