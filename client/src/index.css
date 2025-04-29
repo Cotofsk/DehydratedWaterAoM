@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 :root {
+  @apply dark;
+}
+
+:root {
   --background: 84 29% 11%;
   --foreground: 35 40% 70%;
   --muted: 84 20% 15%;
