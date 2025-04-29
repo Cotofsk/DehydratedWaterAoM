@@ -255,7 +255,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       // Refetch entries
       const updatedEntries = await fetchBuildOrderEntries(buildOrderId);
       setEntries(updatedEntries);
-
+      setActiveTab('entries'); //Added
       toast({
         title: 'Entry added',
         description: 'A new entry has been added to the build order.',
@@ -286,6 +286,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       if (buildOrderId) {
         const updatedEntries = await fetchBuildOrderEntries(buildOrderId);
         setEntries(updatedEntries);
+        setActiveTab('entries'); //Added
       }
 
       toast({
@@ -313,6 +314,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       if (buildOrderId) {
         const updatedEntries = await fetchBuildOrderEntries(buildOrderId);
         setEntries(updatedEntries);
+        setActiveTab('entries'); //Added
       }
 
       // If the deleted entry was selected, reset selection

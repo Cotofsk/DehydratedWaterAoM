@@ -238,7 +238,12 @@ const BuildOrderView: React.FC = () => {
         <EditBuildOrderDialog
           buildOrderId={id}
           open={editDialogOpen}
-          onOpenChange={setEditDialogOpen}
+          onOpenChange={(open) => {
+            setEditDialogOpen(open);
+            if (!open) {
+              handleEditSuccess();
+            }
+          }}
           onSuccess={handleEditSuccess}
           onDelete={handleDelete}
         />
