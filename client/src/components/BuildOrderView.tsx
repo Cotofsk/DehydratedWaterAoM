@@ -176,23 +176,39 @@ const BuildOrderView: React.FC = () => {
                   <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light font-bold">
                     {entry.mainAction}
                   </td>
-                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light flex items-center gap-2">
-                    {entry.villagerCount && (
-                      <span className="mr-2">👥 {entry.villagerCount}</span>
-                    )}
-                    {entry.population && (
-                      <span>Pop: {entry.population}</span>
-                    )}
-                    {entry.notes && (
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Info className="h-5 w-5 text-sandy-light hover:text-sandy-gold transition-colors" />
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-sandy-gold text-parchment-light">
-                          {entry.notes}
-                        </TooltipContent>
-                      </Tooltip>
-                    )}
+                  <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      {entry.villagerCount && (
+                        <span className="mr-2">👥 {entry.villagerCount}</span>
+                      )}
+                      {entry.population && (
+                        <span>Pop: {entry.population}</span>
+                      )}
+                      {entry.notes && (
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Info className="h-5 w-5 text-sandy-light hover:text-sandy-gold transition-colors" />
+                          </TooltipTrigger>
+                          <TooltipContent className="bg-sandy-gold text-parchment-light">
+                            {entry.notes}
+                          </TooltipContent>
+                        </Tooltip>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="flex flex-col items-center">
+                        <img src="/images/food.png" alt="Food" className="w-6 h-6" />
+                        <span className="text-sm">0</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src="/images/wood.png" alt="Wood" className="w-6 h-6" />
+                        <span className="text-sm">0</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src="/images/gold.png" alt="Gold" className="w-6 h-6" />
+                        <span className="text-sm">0</span>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 {entry.miscellaneousAction && (
