@@ -765,6 +765,33 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     )}
                   />
 
+                  <div className="flex gap-4 pt-4">
+                    <div className="flex flex-col items-center">
+                      <img src="/images/food.png" alt="Food" className="w-[32px] h-[32px] mb-2" />
+                      <Input
+                        type="number"
+                        {...entryForm.register('food')}
+                        className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
+                      />
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <img src="/images/wood.png" alt="Wood" className="w-[32px] h-[32px] mb-2" />
+                      <Input
+                        type="number"
+                        {...entryForm.register('wood')}
+                        className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
+                      />
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <img src="/images/gold.png" alt="Gold" className="w-[32px] h-[32px] mb-2" />
+                      <Input
+                        type="number"
+                        {...entryForm.register('gold')}
+                        className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
+                      />
+                    </div>
+                  </div>
+
                   <div className="flex justify-end gap-2 pt-4">
                     <Button
                       type="button"
@@ -845,6 +872,33 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
+
+                    <div className="flex gap-4 pt-4">
+                      <div className="flex flex-col items-center">
+                        <img src="/images/food.png" alt="Food" className="w-[32px] h-[32px] mb-2" />
+                        <Input
+                          type="number"
+                          {...editEntryForm.register('food')}
+                          className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
+                        />
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src="/images/wood.png" alt="Wood" className="w-[32px] h-[32px] mb-2" />
+                        <Input
+                          type="number"
+                          {...editEntryForm.register('wood')}
+                          className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
+                        />
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src="/images/gold.png" alt="Gold" className="w-[32px] h-[32px] mb-2" />
+                        <Input
+                          type="number"
+                          {...editEntryForm.register('gold')}
+                          className="w-20 text-center bg-parchment-light border-2 border-sandy-gold"
+                        />
+                      </div>
+                    </div>
 
                     <div className="flex justify-between pt-4">
                       <Button
