@@ -611,19 +611,19 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                 </div>
               ) : (
                 <div className="overflow-x-auto">
-                  <Table className="border-2 border-sandy-gold">
-                    <TableHeader>
-                      <TableRow className="bg-earthy-brown text-parchment-light">
-                        <TableHead className="w-[60px] text-center">#</TableHead>
-                        <TableHead>Main Action</TableHead>
-                        <TableHead>Details</TableHead>
-                        <TableHead className="w-[140px] text-center">Actions</TableHead>
+                  <Table className="min-w-full bg-parchment/90 backdrop-blur-sm border-2 border-sandy-gold">
+                    <TableHeader className="sticky top-0 z-10">
+                      <TableRow className="bg-sandy-gold/90 text-white">
+                        <TableHead className="w-[60px] text-center font-cinzel text-white">#</TableHead>
+                        <TableHead className="font-cinzel text-white">Main Action</TableHead>
+                        <TableHead className="font-cinzel text-white">Details</TableHead>
+                        <TableHead className="w-[140px] text-center font-cinzel text-white">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {entries.map((entry, index) => (
                         <React.Fragment key={entry.id}>
-                          <TableRow className={entry.isComplete ? 'bg-success-50' : ''}>
+                          <TableRow className={`border-b border-sandy-gold hover:bg-parchment-dark transition-colors ${entry.isComplete ? 'bg-success-50' : ''}`}>
                             <TableCell className="font-medium text-center text-sandy-gold">
                               {entry.sequence}
                             </TableCell>
