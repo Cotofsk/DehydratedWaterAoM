@@ -5,25 +5,25 @@
 @tailwind utilities;
 
 :root {
-  --background: 35 15% 9%;
-  --foreground: 35 25% 85%;
-  --muted: 35 15% 15%;
-  --muted-foreground: 35 20% 65%;
-  --popover: 35 15% 9%;
-  --popover-foreground: 35 25% 85%;
-  --card: 35 15% 13%;
-  --card-foreground: 35 25% 85%;
-  --border: 35 25% 25%;
-  --input: 35 15% 18%;
-  --primary: 35 60% 45%;
-  --primary-foreground: 35 10% 10%;
-  --secondary: 35 15% 20%;
-  --secondary-foreground: 35 25% 85%;
-  --accent: 35 70% 45%;
-  --accent-foreground: 35 10% 10%;
+  --background: 84 29% 11%;
+  --foreground: 35 40% 70%;
+  --muted: 84 20% 15%;
+  --muted-foreground: 35 25% 60%;
+  --popover: 84 29% 11%;
+  --popover-foreground: 35 40% 70%;
+  --card: 84 25% 15%;
+  --card-foreground: 35 40% 70%;
+  --border: 35 40% 30%;
+  --input: 84 20% 20%;
+  --primary: 35 65% 45%;
+  --primary-foreground: 84 10% 10%;
+  --secondary: 84 20% 20%;
+  --secondary-foreground: 35 40% 70%;
+  --accent: 35 80% 45%;
+  --accent-foreground: 84 10% 10%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 35 60% 45%;
+  --ring: 35 65% 45%;
   --radius: 0.3rem;
 
   /* Custom theme colors */
