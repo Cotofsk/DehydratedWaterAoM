@@ -188,7 +188,7 @@ const BuildOrderView: React.FC = () => {
                         {entry.notes && (
                           <Tooltip>
                             <TooltipTrigger>
-                              <Info className="h-5 w-5 -ml-3 text-sandy-light hover:text-sandy-gold transition-colors" />
+                              <Info className="h-5 w-5 -ml-6 text-sandy-light hover:text-sandy-gold transition-colors" />
                             </TooltipTrigger>
                             <TooltipContent className="bg-sandy-dark text-white font-medium">
                               {entry.notes}
