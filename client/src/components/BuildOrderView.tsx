@@ -176,21 +176,21 @@ const BuildOrderView: React.FC = () => {
                   <td className="px-5 py-4 whitespace-nowrap text-base text-sandy-light font-bold flex items-center justify-between">
                     <span>{entry.mainAction}</span>
                     <div className="flex items-center gap-4 mr-4">
-                      {entry.foodCount !== null && (
+                      {entry.food !== null && (
                         <div className="flex flex-col items-center">
-                          <img src="/resources/food.png" alt="Food" className="w-6 h-6" />
+                          <img src="/images/food.png" alt="Food" className="w-6 h-6" />
                           <span className="text-sm">{entry.food}</span>
                         </div>
                       )}
                       {entry.wood !== null && (
                         <div className="flex flex-col items-center">
-                          <img src="/resources/wood.png" alt="Wood" className="w-6 h-6" />
+                          <img src="/images/wood.png" alt="Wood" className="w-6 h-6" />
                           <span className="text-sm">{entry.wood}</span>
                         </div>
                       )}
                       {entry.gold !== null && (
                         <div className="flex flex-col items-center">
-                          <img src="/resources/gold.png" alt="Gold" className="w-6 h-6" />
+                          <img src="/images/gold.png" alt="Gold" className="w-6 h-6" />
                           <span className="text-sm">{entry.gold}</span>
                         </div>
                       )}
