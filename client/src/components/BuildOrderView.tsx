@@ -173,14 +173,14 @@ const BuildOrderView: React.FC = () => {
                   <td className="px-3 py-0.5 align-middle whitespace-nowrap text-base font-medium text-sandy-light">
                     {entry.sequence}
                   </td>
-                  <td className="px-3 py-0.5 align-middle text-base text-sandy-light font-bold break-words">
-                    <div className="max-w-[600px]">{entry.mainAction}</div>
+                  <td className="px-3 py-2 align-middle text-lg text-sandy-light font-bold break-words">
+                    <div className="max-w-[700px]">{entry.mainAction}</div>
                   </td>
-                  <td className="px-3 py-0.5 align-middle whitespace-nowrap text-base text-sandy-light">
+                  <td className="px-3 py-2 align-middle whitespace-nowrap text-lg text-sandy-light">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-3">
                         {entry.villagerCount && (
-                          <span className="mr-2">👥 {entry.villagerCount}</span>
+                          <span className="mr-3">👥 {entry.villagerCount}</span>
                         )}
                         {entry.population && (
                           <span>Pop: {entry.population}</span>
@@ -188,9 +188,9 @@ const BuildOrderView: React.FC = () => {
                         {entry.notes && (
                           <Tooltip>
                             <TooltipTrigger>
-                              <Info className="h-4 w-4 text-sandy-light hover:text-sandy-gold transition-colors" />
+                              <Info className="h-5 w-5 -ml-1 text-sandy-light hover:text-sandy-gold transition-colors" />
                             </TooltipTrigger>
-                            <TooltipContent className="bg-sandy-gold text-parchment-light">
+                            <TooltipContent className="bg-sandy-dark text-parchment-light font-medium">
                               {entry.notes}
                             </TooltipContent>
                           </Tooltip>
