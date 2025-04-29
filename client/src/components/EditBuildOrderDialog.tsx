@@ -504,13 +504,23 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-white">Civilization</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              autoComplete="off"
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                            />
-                          </FormControl>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger className="bg-parchment-light border-2 border-sandy-gold">
+                                <SelectValue placeholder="Select civilization" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent className="bg-parchment border-sandy-gold">
+                              {Object.keys(godsByCivilization).map((civilization) => (
+                                <SelectItem key={civilization} value={civilization}>
+                                  {civilization}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -522,13 +532,24 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-white">God</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              autoComplete="off"
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                            />
-                          </FormControl>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            disabled={!generalInfoForm.watch('civilization')}
+                          >
+                            <FormControl>
+                              <SelectTrigger className="bg-parchment-light border-2 border-sandy-gold">
+                                <SelectValue placeholder={generalInfoForm.watch('civilization') ? "Select god" : "Select civilization first"} />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent className="bg-parchment border-sandy-gold">
+                              {(godsByCivilization[generalInfoForm.watch('civilization')] || []).map((god) => (
+                                <SelectItem key={god} value={god}>
+                                  {god}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -540,13 +561,23 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-white">Type</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              autoComplete="off"
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                            />
-                          </FormControl>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger className="bg-parchment-light border-2 border-sandy-gold">
+                                <SelectValue placeholder="Select type" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent className="bg-parchment border-sandy-gold">
+                              {['Economic', 'Offensive', 'Defensive', 'Divine Powers', 'Mixed'].map((type) => (
+                                <SelectItem key={type} value={type}>
+                                  {type}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                           <FormMessage />
                         </FormItem>
                       )}
