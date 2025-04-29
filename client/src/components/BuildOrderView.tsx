@@ -146,7 +146,9 @@ const BuildOrderView: React.FC = () => {
         </div>
           </div>
       </div>
-
+      
+      {/* Table section */}
+      <>
       <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10 max-w-4xl mx-auto mt-2">
         <table className="w-full divide-y-2 divide-sandy-gold/30">
           <thead className="bg-sandy-gold">
@@ -194,6 +196,7 @@ const BuildOrderView: React.FC = () => {
           </tbody>
         </table>
       </div>
+      </>
 
       {/* Edit Build Order Dialog */}
       {id && (
