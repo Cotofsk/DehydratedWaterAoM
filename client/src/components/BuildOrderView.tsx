@@ -197,15 +197,21 @@ const BuildOrderView: React.FC = () => {
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="flex flex-col items-center">
-                        <img src="/images/food.png" alt="Food" className="w-6 h-6" />
+                        <div className="w-[40px] h-[40px] relative">
+                          <img src="/images/food.png" alt="Food" className="w-full h-full object-cover" />
+                        </div>
                         <span className="text-sm">0</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <img src="/images/wood.png" alt="Wood" className="w-6 h-6" />
+                        <div className="w-[40px] h-[40px] relative">
+                          <img src="/images/wood.png" alt="Wood" className="w-full h-full object-cover" />
+                        </div>
                         <span className="text-sm">0</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <img src="/images/gold.png" alt="Gold" className="w-6 h-6" />
+                        <div className="w-[40px] h-[40px] relative">
+                          <img src="/images/gold.png" alt="Gold" className="w-full h-full object-cover" />
+                        </div>
                         <span className="text-sm">0</span>
                       </div>
                     </div>
