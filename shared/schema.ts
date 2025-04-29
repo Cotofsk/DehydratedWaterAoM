@@ -69,7 +69,8 @@ export const insertBuildOrderSchema = createInsertSchema(buildOrders).omit({
 
 export const insertBuildOrderEntrySchema = createInsertSchema(buildOrderEntries).omit({
   id: true,
-});
+}).partial();
+
 
 // Types for insertable data
 export type InsertUser = z.infer<typeof insertUserSchema>;
