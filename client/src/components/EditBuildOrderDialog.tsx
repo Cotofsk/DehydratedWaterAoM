@@ -467,7 +467,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-earthy-dark">Build Order Name</FormLabel>
+                        <FormLabel className="text-white">Build Order Name</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
@@ -485,7 +485,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       name="civilization"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-earthy-dark">Civilization</FormLabel>
+                          <FormLabel className="text-white">Civilization</FormLabel>
                           <FormControl>
                             <Input 
                               {...field} 
@@ -502,7 +502,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       name="god"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-earthy-dark">God</FormLabel>
+                          <FormLabel className="text-white">God</FormLabel>
                           <FormControl>
                             <Input 
                               {...field} 
@@ -519,7 +519,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       name="type"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-earthy-dark">Type</FormLabel>
+                          <FormLabel className="text-white">Type</FormLabel>
                           <FormControl>
                             <Input 
                               {...field} 
@@ -537,7 +537,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     name="description"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-earthy-dark">Description</FormLabel>
+                        <FormLabel className="text-white">Description</FormLabel>
                         <FormControl>
                           <Textarea 
                             {...field} 
@@ -713,7 +713,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     name="mainAction"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-earthy-dark">Main Action</FormLabel>
+                        <FormLabel className="text-white">Main Action</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
@@ -731,7 +731,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     name="miscellaneousAction"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-earthy-dark">Miscellaneous Action (Optional)</FormLabel>
+                        <FormLabel className="text-white">Miscellaneous Action (Optional)</FormLabel>
                         <FormControl>
                           <Input 
                             {...field} 
@@ -750,7 +750,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     name="notes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-earthy-dark">Notes (Optional)</FormLabel>
+                        <FormLabel className="text-white">Notes (Optional)</FormLabel>
                         <FormControl>
                           <Textarea 
                             {...field} 
@@ -759,26 +759,6 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                           />
                         </FormControl>
                         <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={entryForm.control}
-                    name="isComplete"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-2">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                          />
-                        </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel className="text-earthy-dark">
-                            Mark as completed step
-                          </FormLabel>
-                        </div>
                       </FormItem>
                     )}
                   />
@@ -818,7 +798,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       name="mainAction"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-earthy-dark">Main Action</FormLabel>
+                          <FormLabel className="text-white">Main Action</FormLabel>
                           <FormControl>
                             <Input 
                               {...field} 
@@ -835,7 +815,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       name="miscellaneousAction"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-earthy-dark">Miscellaneous Action (Optional)</FormLabel>
+                          <FormLabel className="text-white">Miscellaneous Action (Optional)</FormLabel>
                           <FormControl>
                             <Input 
                               {...field} 
@@ -852,7 +832,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       name="notes"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-earthy-dark">Notes (Optional)</FormLabel>
+                          <FormLabel className="text-white">Notes (Optional)</FormLabel>
                           <FormControl>
                             <Textarea 
                               {...field} 
@@ -860,26 +840,6 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                             />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={editEntryForm.control}
-                      name="isComplete"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-2">
-                          <FormControl>
-                            <Checkbox
-                              checked={field.value}
-                              onCheckedChange={field.onChange}
-                            />
-                          </FormControl>
-                          <div className="space-y-1 leading-none">
-                            <FormLabel className="text-earthy-dark">
-                              Mark as completed step
-                            </FormLabel>
-                          </div>
                         </FormItem>
                       )}
                     />
