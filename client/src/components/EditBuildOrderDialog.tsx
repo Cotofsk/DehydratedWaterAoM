@@ -767,7 +767,87 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     )}
                   />
                   
+                  <div className="grid grid-cols-2 gap-4">
+                    <FormField
+                      control={entryForm.control}
+                      name="timeStamp"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-earthy-dark">Time Stamp</FormLabel>
+                          <FormControl>
+                            <Input 
+                              {...field} 
+                              placeholder="e.g., 0:30" 
+                              className="bg-parchment-light border-2 border-sandy-gold" 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={entryForm.control}
+                      name="agePhase"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-earthy-dark">Age/Phase</FormLabel>
+                          <FormControl>
+                            <Input 
+                              {...field} 
+                              placeholder="e.g., Archaic, Classical" 
+                              className="bg-parchment-light border-2 border-sandy-gold" 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   
+                  <div className="grid grid-cols-2 gap-4">
+                    <FormField
+                      control={entryForm.control}
+                      name="villagerCount"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-earthy-dark">Villager Count</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="number"
+                              {...field} 
+                              placeholder="e.g., 5" 
+                              className="bg-parchment-light border-2 border-sandy-gold" 
+                              value={field.value || ''}
+                              onChange={(e) => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={entryForm.control}
+                      name="population"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-earthy-dark">Population</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="number"
+                              {...field} 
+                              placeholder="e.g., 10" 
+                              className="bg-parchment-light border-2 border-sandy-gold" 
+                              value={field.value || ''}
+                              onChange={(e) => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   
                   <FormField
                     control={entryForm.control}
