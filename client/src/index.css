@@ -5,43 +5,43 @@
 @tailwind utilities;
 
 :root {
-  --background: 32 27% 8%;
-  --foreground: 33 33% 90%;
-  --muted: 32 27% 12%;
-  --muted-foreground: 33 20% 65%;
-  --popover: 32 27% 8%;
-  --popover-foreground: 33 33% 90%;
-  --card: 32 27% 15%;
-  --card-foreground: 33 33% 90%;
-  --border: 35 25% 35%;
-  --input: 35 25% 35%;
-  --primary: 35 65% 55%;
-  --primary-foreground: 33 33% 90%;
-  --secondary: 32 27% 15%;
-  --secondary-foreground: 33 33% 90%;
-  --accent: 35 80% 55%;
-  --accent-foreground: 33 33% 90%;
+  --background: 32 15% 8%;
+  --foreground: 33 20% 85%;
+  --muted: 32 15% 12%;
+  --muted-foreground: 33 15% 65%;
+  --popover: 32 15% 8%;
+  --popover-foreground: 33 20% 85%;
+  --card: 35 15% 25%;
+  --card-foreground: 33 20% 85%;
+  --border: 35 25% 45%;
+  --input: 35 25% 45%;
+  --primary: 35 50% 45%;
+  --primary-foreground: 33 20% 85%;
+  --secondary: 35 15% 25%;
+  --secondary-foreground: 33 20% 85%;
+  --accent: 35 60% 45%;
+  --accent-foreground: 33 20% 85%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 35 65% 50%;
+  --ring: 35 50% 45%;
   --radius: 0.5rem;
 
   /* Custom theme colors */
-  --earthy-brown: 35 25% 35%;
-  --earthy-light: 35 25% 45%;
-  --earthy-dark: 35 25% 25%;
-  --sandy-gold: 35 65% 55%;
-  --sandy-light: 35 65% 65%;
-  --sandy-dark: 35 65% 45%;
-  --accent-gold: 35 80% 55%;
-  --accent-light: 35 80% 65%;
-  --accent-dark: 35 80% 45%;
-  --parchment-light: 33 33% 90%;
-  --parchment: 33 33% 80%;
-  --parchment-dark: 33 33% 70%;
-  --wood: 32 27% 8%;
-  --wood-light: 32 27% 15%;
-  --wood-dark: 32 27% 5%;
+  --earthy-brown: 35 30% 35%;
+  --earthy-light: 35 30% 45%;
+  --earthy-dark: 35 30% 25%;
+  --sandy-gold: 35 50% 45%;
+  --sandy-light: 35 50% 55%;
+  --sandy-dark: 35 50% 35%;
+  --accent-gold: 35 60% 45%;
+  --accent-light: 35 60% 55%;
+  --accent-dark: 35 60% 35%;
+  --parchment-light: 35 25% 85%;
+  --parchment: 35 25% 75%;
+  --parchment-dark: 35 25% 65%;
+  --wood: 32 15% 8%;
+  --wood-light: 32 15% 15%;
+  --wood-dark: 32 15% 5%;
 }
 
 .dark {
