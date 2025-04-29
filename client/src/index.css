@@ -5,43 +5,43 @@
 @tailwind utilities;
 
 :root {
-  --background: 30 15% 12%;
-  --foreground: 39 38% 88%;
-  --muted: 30 15% 20%;
-  --muted-foreground: 39 38% 70%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 20 14.3% 4.1%;
-  --card: 39 38% 88%;
-  --card-foreground: 30 10% 22%;
-  --border: 30 29% 70%;
-  --input: 30 29% 70%;
-  --primary: 35 65% 50%;
-  --primary-foreground: 36 33% 97%;
-  --secondary: 30 10% 95%;
-  --secondary-foreground: 24 9.8% 10%;
-  --accent: 35 80% 50%;
-  --accent-foreground: 36 33% 97%;
+  --background: 32 27% 8%;
+  --foreground: 33 33% 90%;
+  --muted: 32 27% 12%;
+  --muted-foreground: 33 20% 65%;
+  --popover: 32 27% 8%;
+  --popover-foreground: 33 33% 90%;
+  --card: 32 27% 15%;
+  --card-foreground: 33 33% 90%;
+  --border: 35 25% 35%;
+  --input: 35 25% 35%;
+  --primary: 35 65% 55%;
+  --primary-foreground: 33 33% 90%;
+  --secondary: 32 27% 15%;
+  --secondary-foreground: 33 33% 90%;
+  --accent: 35 80% 55%;
+  --accent-foreground: 33 33% 90%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 9.1% 97.8%;
   --ring: 35 65% 50%;
   --radius: 0.5rem;
 
   /* Custom theme colors */
-  --earthy-brown: 30 50% 36%;
-  --earthy-light: 30 34% 49%;
-  --earthy-dark: 30 50% 28%; 
-  --sandy-gold: 33 60% 53%;
-  --sandy-light: 33 60% 65%;
-  --sandy-dark: 33 60% 44%;
-  --accent-gold: 43 74% 49%;
-  --accent-light: 43 80% 67%;
-  --accent-dark: 43 74% 41%;
-  --parchment-light: 60 30% 96%;
-  --parchment: 39 38% 88%;
-  --parchment-dark: 39 38% 70%;
-  --wood: 28 24% 19%;
-  --wood-light: 28 24% 29%;
-  --wood-dark: 28 24% 14%;
+  --earthy-brown: 35 25% 35%;
+  --earthy-light: 35 25% 45%;
+  --earthy-dark: 35 25% 25%;
+  --sandy-gold: 35 65% 55%;
+  --sandy-light: 35 65% 65%;
+  --sandy-dark: 35 65% 45%;
+  --accent-gold: 35 80% 55%;
+  --accent-light: 35 80% 65%;
+  --accent-dark: 35 80% 45%;
+  --parchment-light: 33 33% 90%;
+  --parchment: 33 33% 80%;
+  --parchment-dark: 33 33% 70%;
+  --wood: 32 27% 8%;
+  --wood-light: 32 27% 15%;
+  --wood-dark: 32 27% 5%;
 }
 
 .dark {
