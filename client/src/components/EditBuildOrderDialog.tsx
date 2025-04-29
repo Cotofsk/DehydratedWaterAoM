@@ -62,10 +62,6 @@ const generalInfoSchema = z.object({
 const entrySchema = z.object({
   mainAction: z.string().min(3, { message: 'Main action is required' }),
   miscellaneousAction: z.string().optional(),
-  villagerCount: z.coerce.number().int().positive().optional(),
-  timeStamp: z.string().optional(),
-  agePhase: z.string().optional(),
-  population: z.coerce.number().int().positive().optional(),
   notes: z.string().optional(),
   isComplete: z.boolean().default(false),
 });
@@ -98,9 +94,9 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [selectedEntryId, setSelectedEntryId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   const { toast } = useToast();
-  
+
   // General Info Form
   const generalInfoForm = useForm<GeneralInfoFormValues>({
     resolver: zodResolver(generalInfoSchema),
@@ -112,53 +108,45 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       description: '',
     },
   });
-  
+
   // New Entry Form
   const entryForm = useForm<EntryFormValues>({
     resolver: zodResolver(entrySchema),
     defaultValues: {
       mainAction: '',
       miscellaneousAction: '',
-      villagerCount: undefined,
-      timeStamp: '',
-      agePhase: '',
-      population: undefined,
       notes: '',
       isComplete: false,
     },
   });
-  
+
   // Edit Entry Form
   const editEntryForm = useForm<EntryFormValues>({
     resolver: zodResolver(entrySchema),
     defaultValues: {
       mainAction: '',
       miscellaneousAction: '',
-      villagerCount: undefined,
-      timeStamp: '',
-      agePhase: '',
-      population: undefined,
       notes: '',
       isComplete: false,
     },
   });
-  
+
   // Load build order data and entries
   useEffect(() => {
     const loadBuildOrderData = async () => {
       if (!buildOrderId || !open) return;
-      
+
       try {
         setLoading(true);
         setError(null);
-        
+
         // Fetch build order and entries
         const buildOrderData = await fetchBuildOrder(buildOrderId);
         const entriesData = await fetchBuildOrderEntries(buildOrderId);
-        
+
         setBuildOrder(buildOrderData);
         setEntries(entriesData);
-        
+
         // Set form values
         generalInfoForm.reset({
           name: buildOrderData.name,
@@ -167,7 +155,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
           type: buildOrderData.type,
           description: buildOrderData.description,
         });
-        
+
       } catch (err) {
         console.error('Error loading build order data:', err);
         setError('Failed to load build order. Please try again.');
@@ -175,10 +163,10 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
         setLoading(false);
       }
     };
-    
+
     loadBuildOrderData();
   }, [buildOrderId, open, generalInfoForm]);
-  
+
   // Reset state when the dialog is closed
   useEffect(() => {
     if (!open) {
@@ -188,7 +176,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setError(null);
     }
   }, [open]);
-  
+
   // Load selected entry into edit form
   useEffect(() => {
     if (selectedEntryId) {
@@ -197,39 +185,35 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
         editEntryForm.reset({
           mainAction: selectedEntry.mainAction,
           miscellaneousAction: selectedEntry.miscellaneousAction || '',
-          villagerCount: selectedEntry.villagerCount || undefined,
-          timeStamp: selectedEntry.timeStamp || '',
-          agePhase: selectedEntry.agePhase || '',
-          population: selectedEntry.population || undefined,
           notes: selectedEntry.notes || '',
           isComplete: selectedEntry.isComplete || false,
         });
       }
     }
   }, [selectedEntryId, entries, editEntryForm]);
-  
+
   // Handle general info save
   const onSaveGeneralInfo = async (data: GeneralInfoFormValues) => {
     if (!buildOrderId || !buildOrder) return;
-    
+
     try {
       setSaving(true);
       setError(null);
-      
+
       await updateBuildOrder(buildOrderId, data);
-      
+
       toast({
         title: 'Build order updated',
         description: 'The build order information has been updated.',
       });
-      
+
       // Refresh the build order
       const updatedBuildOrder = await fetchBuildOrder(buildOrderId);
       setBuildOrder(updatedBuildOrder);
-      
+
       // Refetch build orders list 
       queryClient.invalidateQueries({ queryKey: ['/api/build-orders'] });
-      
+
       if (onSuccess) {
         onSuccess();
       }
@@ -240,42 +224,38 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(false);
     }
   };
-  
+
   // Handle create entry
   const onCreateEntry = async (data: EntryFormValues) => {
     if (!buildOrderId) return;
-    
+
     try {
       setSaving(true);
       setError(null);
-      
+
       // Get the next sequence number
       const nextSequence = entries.length > 0 
         ? Math.max(...entries.map(e => e.sequence)) + 1 
         : 1;
-      
+
       // Create new entry with sequence
       await createBuildOrderEntry(buildOrderId, {
         ...data,
         sequence: nextSequence
       });
-      
+
       // Reset form
       entryForm.reset({
         mainAction: '',
         miscellaneousAction: '',
-        villagerCount: undefined,
-        timeStamp: '',
-        agePhase: '',
-        population: undefined,
         notes: '',
         isComplete: false,
       });
-      
+
       // Refetch entries
       const updatedEntries = await fetchBuildOrderEntries(buildOrderId);
       setEntries(updatedEntries);
-      
+
       toast({
         title: 'Entry added',
         description: 'A new entry has been added to the build order.',
@@ -287,27 +267,27 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(false);
     }
   };
-  
+
   // Handle update entry
   const onUpdateEntry = async (data: EntryFormValues) => {
     if (!selectedEntryId) return;
-    
+
     try {
       setSaving(true);
       setError(null);
-      
+
       // Update entry
       await updateBuildOrderEntry(selectedEntryId, data);
-      
+
       // Reset selected entry
       setSelectedEntryId(null);
-      
+
       // Refetch entries
       if (buildOrderId) {
         const updatedEntries = await fetchBuildOrderEntries(buildOrderId);
         setEntries(updatedEntries);
       }
-      
+
       toast({
         title: 'Entry updated',
         description: 'The entry has been updated.',
@@ -319,27 +299,27 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(false);
     }
   };
-  
+
   // Handle delete entry
   const onDeleteEntry = async (entryId: number) => {
     try {
       setSaving(true);
       setError(null);
-      
+
       // Delete entry
       await deleteBuildOrderEntry(entryId);
-      
+
       // Refetch entries
       if (buildOrderId) {
         const updatedEntries = await fetchBuildOrderEntries(buildOrderId);
         setEntries(updatedEntries);
       }
-      
+
       // If the deleted entry was selected, reset selection
       if (selectedEntryId === entryId) {
         setSelectedEntryId(null);
       }
-      
+
       toast({
         title: 'Entry deleted',
         description: 'The entry has been removed from the build order.',
@@ -351,28 +331,28 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(false);
     }
   };
-  
+
   // Handle delete build order
   const onDeleteBuildOrder = async () => {
     if (!buildOrderId) return;
-    
+
     try {
       setDeleting(true);
       setError(null);
-      
+
       await deleteBuildOrder(buildOrderId);
-      
+
       toast({
         title: 'Build order deleted',
         description: 'The build order has been permanently deleted.',
       });
-      
+
       // Refresh build orders list
       queryClient.invalidateQueries({ queryKey: ['/api/build-orders'] });
-      
+
       // Close dialog
       onOpenChange(false);
-      
+
       // Call onDelete callback
       if (onDelete) {
         onDelete();
@@ -385,39 +365,39 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setConfirmDelete(false);
     }
   };
-  
+
   // Handle move entry up/down
   const moveEntry = async (entryId: number, direction: 'up' | 'down') => {
     if (!buildOrderId) return;
-    
+
     const currentIndex = entries.findIndex(entry => entry.id === entryId);
     if (currentIndex === -1) return;
-    
+
     // Can't move up if already at the top
     if (direction === 'up' && currentIndex === 0) return;
-    
+
     // Can't move down if already at the bottom
     if (direction === 'down' && currentIndex === entries.length - 1) return;
-    
+
     // Create a copy of entries and swap positions
     const newEntries = [...entries];
     const newIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
-    
+
     // Swap the entries
     [newEntries[currentIndex], newEntries[newIndex]] = [newEntries[newIndex], newEntries[currentIndex]];
-    
+
     // Get the IDs in the new order
     const newOrder = newEntries.map(entry => entry.id);
-    
+
     try {
       setSaving(true);
-      
+
       // Reorder entries on server
       await reorderBuildOrderEntries(buildOrderId, newOrder);
-      
+
       // Update local state
       setEntries(newEntries);
-      
+
       toast({
         title: 'Build order updated',
         description: 'Entry order has been updated.',
@@ -429,7 +409,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       setSaving(false);
     }
   };
-  
+
   // If no build order selected, show nothing
   if (!buildOrderId && open) {
     return (
@@ -443,7 +423,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
       </Dialog>
     );
   }
-  
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="bg-parchment sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
@@ -455,14 +435,14 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
             Make changes to your build order and its steps.
           </DialogDescription>
         </DialogHeader>
-        
+
         {error && (
           <Alert variant="destructive" className="mb-4">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-        
+
         {loading ? (
           <div className="flex justify-center items-center p-6">
             <p className="text-earthy-dark">Loading build order...</p>
@@ -477,7 +457,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                 <TabsTrigger value="edit-entry" className="flex-1">Edit Entry</TabsTrigger>
               )}
             </TabsList>
-            
+
             {/* General Info Tab */}
             <TabsContent value="general" className="mt-0">
               <Form {...generalInfoForm}>
@@ -498,7 +478,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       </FormItem>
                     )}
                   />
-                  
+
                   <div className="grid grid-cols-3 gap-4">
                     <FormField
                       control={generalInfoForm.control}
@@ -516,7 +496,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-                    
+
                     <FormField
                       control={generalInfoForm.control}
                       name="god"
@@ -533,7 +513,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-                    
+
                     <FormField
                       control={generalInfoForm.control}
                       name="type"
@@ -551,7 +531,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       )}
                     />
                   </div>
-                  
+
                   <FormField
                     control={generalInfoForm.control}
                     name="description"
@@ -568,7 +548,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       </FormItem>
                     )}
                   />
-                  
+
                   <div className="flex justify-between pt-4">
                     <Button
                       type="button"
@@ -578,7 +558,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                     >
                       Delete Build Order
                     </Button>
-                    
+
                     <Button
                       type="submit"
                       className="bg-sandy-gold hover:bg-sandy-dark text-parchment-light"
@@ -587,7 +567,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       {saving ? 'Saving...' : 'Save Changes'}
                     </Button>
                   </div>
-                  
+
                   {confirmDelete && (
                     <Alert variant="destructive" className="mt-4">
                       <div className="font-semibold">Delete this build order?</div>
@@ -615,7 +595,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                 </form>
               </Form>
             </TabsContent>
-            
+
             {/* Entries Tab */}
             <TabsContent value="entries" className="mt-0">
               {entries.length === 0 ? (
@@ -649,10 +629,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                             </TableCell>
                             <TableCell>{entry.mainAction}</TableCell>
                             <TableCell>
-                              {entry.timeStamp && <span className="mr-2">⏱ {entry.timeStamp}</span>}
-                              {entry.villagerCount && <span className="mr-2">👥 {entry.villagerCount}</span>}
-                              {entry.agePhase && <span className="mr-2">{entry.agePhase}</span>}
-                              {entry.population && <span>Pop: {entry.population}</span>}
+                              {/* Removed time, villagerCount, agePhase, and population display */}
                             </TableCell>
                             <TableCell>
                               <div className="flex justify-center gap-1">
@@ -715,7 +692,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                   </Table>
                 </div>
               )}
-              
+
               <div className="mt-4">
                 <Button
                   onClick={() => setActiveTab('new-entry')}
@@ -726,7 +703,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                 </Button>
               </div>
             </TabsContent>
-            
+
             {/* New Entry Tab */}
             <TabsContent value="new-entry" className="mt-0">
               <Form {...entryForm}>
@@ -748,7 +725,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={entryForm.control}
                     name="miscellaneousAction"
@@ -766,89 +743,8 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       </FormItem>
                     )}
                   />
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={entryForm.control}
-                      name="timeStamp"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-earthy-dark">Time Stamp</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              placeholder="e.g., 0:30" 
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={entryForm.control}
-                      name="agePhase"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-earthy-dark">Age/Phase</FormLabel>
-                          <FormControl>
-                            <Input 
-                              {...field} 
-                              placeholder="e.g., Archaic, Classical" 
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={entryForm.control}
-                      name="villagerCount"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-earthy-dark">Villager Count</FormLabel>
-                          <FormControl>
-                            <Input 
-                              type="number"
-                              {...field} 
-                              placeholder="e.g., 5" 
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                              value={field.value || ''}
-                              onChange={(e) => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={entryForm.control}
-                      name="population"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-earthy-dark">Population</FormLabel>
-                          <FormControl>
-                            <Input 
-                              type="number"
-                              {...field} 
-                              placeholder="e.g., 10" 
-                              className="bg-parchment-light border-2 border-sandy-gold" 
-                              value={field.value || ''}
-                              onChange={(e) => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
+
+
                   <FormField
                     control={entryForm.control}
                     name="notes"
@@ -866,7 +762,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={entryForm.control}
                     name="isComplete"
@@ -886,7 +782,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       </FormItem>
                     )}
                   />
-                  
+
                   <div className="flex justify-end gap-2 pt-4">
                     <Button
                       type="button"
@@ -911,7 +807,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                 </form>
               </Form>
             </TabsContent>
-            
+
             {/* Edit Entry Tab */}
             {selectedEntryId && (
               <TabsContent value="edit-entry" className="mt-0">
@@ -933,7 +829,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-                    
+
                     <FormField
                       control={editEntryForm.control}
                       name="miscellaneousAction"
@@ -950,85 +846,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <FormField
-                        control={editEntryForm.control}
-                        name="timeStamp"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-earthy-dark">Time Stamp</FormLabel>
-                            <FormControl>
-                              <Input 
-                                {...field} 
-                                className="bg-parchment-light border-2 border-sandy-gold" 
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={editEntryForm.control}
-                        name="agePhase"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-earthy-dark">Age/Phase</FormLabel>
-                            <FormControl>
-                              <Input 
-                                {...field} 
-                                className="bg-parchment-light border-2 border-sandy-gold" 
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <FormField
-                        control={editEntryForm.control}
-                        name="villagerCount"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-earthy-dark">Villager Count</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="number"
-                                {...field} 
-                                className="bg-parchment-light border-2 border-sandy-gold" 
-                                value={field.value || ''}
-                                onChange={(e) => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={editEntryForm.control}
-                        name="population"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-earthy-dark">Population</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="number"
-                                {...field} 
-                                className="bg-parchment-light border-2 border-sandy-gold" 
-                                value={field.value || ''}
-                                onChange={(e) => field.onChange(e.target.value === '' ? undefined : parseInt(e.target.value))}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    
+
                     <FormField
                       control={editEntryForm.control}
                       name="notes"
@@ -1045,7 +863,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-                    
+
                     <FormField
                       control={editEntryForm.control}
                       name="isComplete"
@@ -1065,7 +883,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                         </FormItem>
                       )}
                     />
-                    
+
                     <div className="flex justify-between pt-4">
                       <Button
                         type="button"
@@ -1080,7 +898,7 @@ const EditBuildOrderDialog: React.FC<EditBuildOrderDialogProps> = ({
                       >
                         Delete Entry
                       </Button>
-                      
+
                       <div className="flex gap-2">
                         <Button
                           type="button"
