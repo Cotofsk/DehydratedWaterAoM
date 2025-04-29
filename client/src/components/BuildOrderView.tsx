@@ -170,13 +170,13 @@ const BuildOrderView: React.FC = () => {
             {entries.map((entry) => (
               <React.Fragment key={entry.id}>
                 <tr className="hover:bg-sandy-gold/5">
-                  <td className="px-5 py-2 whitespace-nowrap text-base font-medium text-sandy-light">
+                  <td className="px-5 py-1 whitespace-nowrap text-base font-medium text-sandy-light">
                     {entry.sequence}
                   </td>
-                  <td className="px-5 py-2 text-base text-sandy-light font-bold break-words">
+                  <td className="px-5 py-1 text-base text-sandy-light font-bold break-words">
                     <div className="max-w-[400px]">{entry.mainAction}</div>
                   </td>
-                  <td className="px-5 py-2 whitespace-nowrap text-base text-sandy-light flex items-center gap-4">
+                  <td className="px-5 py-1 whitespace-nowrap text-base text-sandy-light flex items-center gap-4">
                     <div className="flex items-center gap-2">
                       {entry.villagerCount && (
                         <span className="mr-2">👥 {entry.villagerCount}</span>
@@ -196,11 +196,11 @@ const BuildOrderView: React.FC = () => {
                       )}
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center gap-0">
                         <div className="w-[40px] h-[40px] relative">
                           <img src="/images/food.png" alt="Food" className="w-full h-full object-cover" />
                         </div>
-                        <span className="text-lg font-bold">0</span>
+                        <span className="text-lg font-bold -mt-1">0</span>
                       </div>
                       <div className="flex flex-col items-center">
                         <div className="w-[40px] h-[40px] relative">
