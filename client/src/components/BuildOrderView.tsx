@@ -170,50 +170,51 @@ const BuildOrderView: React.FC = () => {
             {entries.map((entry) => (
               <React.Fragment key={entry.id}>
                 <tr className="hover:bg-sandy-gold/5">
-                  <td className="px-5 py-1 whitespace-nowrap text-base font-medium text-sandy-light">
+                  <td className="px-3 py-0.5 align-middle whitespace-nowrap text-base font-medium text-sandy-light">
                     {entry.sequence}
                   </td>
-                  <td className="px-5 py-1 text-base text-sandy-light font-bold break-words">
+                  <td className="px-3 py-0.5 align-middle text-base text-sandy-light font-bold break-words">
                     <div className="max-w-[400px]">{entry.mainAction}</div>
                   </td>
-                  <td className="px-5 py-1 whitespace-nowrap text-base text-sandy-light flex items-center gap-4">
-                    <div className="flex items-center gap-2">
-                      {entry.villagerCount && (
-                        <span className="mr-2">👥 {entry.villagerCount}</span>
-                      )}
-                      {entry.population && (
-                        <span>Pop: {entry.population}</span>
-                      )}
-                      {entry.notes && (
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <Info className="h-5 w-5 text-sandy-light hover:text-sandy-gold transition-colors" />
-                          </TooltipTrigger>
-                          <TooltipContent className="bg-sandy-gold text-parchment-light">
-                            {entry.notes}
-                          </TooltipContent>
-                        </Tooltip>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="flex flex-col items-center gap-0">
-                        <div className="w-[40px] h-[40px] relative">
-                          <img src="/images/food.png" alt="Food" className="w-full h-full object-cover" />
-                        </div>
-                        <span className="text-lg font-bold -mt-1">0</span>
+                  <td className="px-3 py-0.5 align-middle whitespace-nowrap text-base text-sandy-light">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        {entry.villagerCount && (
+                          <span className="mr-2">👥 {entry.villagerCount}</span>
+                        )}
+                        {entry.population && (
+                          <span>Pop: {entry.population}</span>
+                        )}
+                        {entry.notes && (
+                          <Tooltip>
+                            <TooltipTrigger>
+                              <Info className="h-4 w-4 text-sandy-light hover:text-sandy-gold transition-colors" />
+                            </TooltipTrigger>
+                            <TooltipContent className="bg-sandy-gold text-parchment-light">
+                              {entry.notes}
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
                       </div>
+                      <div className="flex items-center gap-2">
+                        <div className="flex flex-col items-center">
+                          <div className="w-[32px] h-[32px] relative">
+                            <img src="/images/food.png" alt="Food" className="w-full h-full object-cover" />
+                          </div>
+                          <span className="text-base font-bold leading-none">0</span>
+                        </div>
                       <div className="flex flex-col items-center">
-                        <div className="w-[40px] h-[40px] relative">
-                          <img src="/images/wood.png" alt="Wood" className="w-full h-full object-cover" />
+                          <div className="w-[32px] h-[32px] relative">
+                            <img src="/images/wood.png" alt="Wood" className="w-full h-full object-cover" />
+                          </div>
+                          <span className="text-base font-bold leading-none">0</span>
                         </div>
-                        <span className="text-lg font-bold">0</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <div className="w-[40px] h-[40px] relative">
-                          <img src="/images/gold.png" alt="Gold" className="w-full h-full object-cover" />
+                        <div className="flex flex-col items-center">
+                          <div className="w-[32px] h-[32px] relative">
+                            <img src="/images/gold.png" alt="Gold" className="w-full h-full object-cover" />
+                          </div>
+                          <span className="text-base font-bold leading-none">0</span>
                         </div>
-                        <span className="text-lg font-bold">0</span>
-                      </div>
                     </div>
                   </td>
                 </tr>
