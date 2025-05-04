@@ -148,7 +148,7 @@ const BuildOrderView: React.FC = () => {
             Edit
           </Button>
         </div>
-          </div>
+      </div>
 
       {/* Table section */}
       <div className="overflow-hidden rounded-lg border-2 border-sandy-gold relative z-10 max-w-4xl mx-auto mt-2">
@@ -187,10 +187,17 @@ const BuildOrderView: React.FC = () => {
                         )}
                         {entry.notes && (
                           <Tooltip>
-                            <TooltipTrigger>
-                              <Info className="h-5 w-5 -ml-6 text-sandy-light hover:text-sandy-gold transition-colors" />
+                            <TooltipTrigger asChild>
+                              <button className="text-sandy-light hover:text-sandy-gold transition-colors">
+                                <Info className="h-5 w-5" />
+                              </button>
                             </TooltipTrigger>
-                            <TooltipContent className="bg-sandy-dark text-white font-medium">
+                            <TooltipContent 
+                              className="bg-sandy-dark text-white font-medium max-w-xs p-3 break-words whitespace-normal text-sm"
+                              side="top"
+                              align="start"
+                              collisionPadding={16}
+                            >
                               {entry.notes}
                             </TooltipContent>
                           </Tooltip>
